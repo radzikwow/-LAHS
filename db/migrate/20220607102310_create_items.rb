@@ -3,8 +3,8 @@ class CreateItems < ActiveRecord::Migration[6.1]
     create_table :items do |t|
       t.string :name
       t.string :item_type
-      t.integer :current_level
-      t.integer :attempts
+      t.references :current_level, null: false, foreign_key: true
+      t.references :attempt, null: false, foreign_key: true
 
       t.timestamps
     end
