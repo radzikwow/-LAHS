@@ -8,5 +8,5 @@
 
 Item.destroy_all
 
-Item.create!(name: "weapon", item_type: "weapon", current_level: 12)
-Item.create!(name: "helmet", item_type: "armour", current_level: 12)
+Item.create!(name: "weapon", item_type: "weapon")
+Item.create!(name: "helmet", item_type: "armour")

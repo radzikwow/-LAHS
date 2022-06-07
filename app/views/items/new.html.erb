@@ -1,0 +1,12 @@
+<div class="container">
+
+    <div class="item-container">
+      <%# insert img here %>
+      <h2>Weapon</h2>
+      <%= simple_form_for(@item, url: root_path) do |f|%>
+        <%= f.input :current_level, as: :numeric, input_html: { min: '1', max: '20' } %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+
+</div>
