@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
-  def new
-    @item = Item.new
+  def edit
+    @item = Item.where(name: "weapon")
   end
 
   def update
     raise
-    @item = Item.where(name: "weapon")
+    @item = Item.where(name: "weapon",)
   end
 end
