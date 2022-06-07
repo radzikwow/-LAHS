@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Item.destroy_all
+
+Item.create!(name: "weapon", item_type: "weapon", current_level: 12)
+Item.create!(name: "helmet", item_type: "armour", current_level: 12)
