@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_07_091611) do
+ActiveRecord::Schema.define(version: 2022_06_07_102500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attempts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "current_levels", force: :cascade do |t|
     t.integer "level"
@@ -24,10 +29,12 @@ ActiveRecord::Schema.define(version: 2022_06_07_091611) do
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "item_type"
-    t.integer "current_level"
-    t.integer "attempts"
+    t.bigint "current_level_id", null: false
+    t.bigint "attempt_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["attempt_id"], name: "index_items_on_attempt_id"
+    t.index ["current_level_id"], name: "index_items_on_current_level_id"
   end
 
   create_table "materials", force: :cascade do |t|
@@ -41,16 +48,18 @@ ActiveRecord::Schema.define(version: 2022_06_07_091611) do
     t.index ["item_id"], name: "index_materials_on_item_id"
   end
 
-  create_table "succes_chances", force: :cascade do |t|
+  create_table "success_chances", force: :cascade do |t|
     t.bigint "current_level_id", null: false
     t.integer "base"
     t.integer "max"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["current_level_id"], name: "index_succes_chances_on_current_level_id"
+    t.index ["current_level_id"], name: "index_success_chances_on_current_level_id"
   end
 
+  add_foreign_key "items", "attempts"
+  add_foreign_key "items", "current_levels"
   add_foreign_key "materials", "current_levels"
   add_foreign_key "materials", "items"
-  add_foreign_key "succes_chances", "current_levels"
+  add_foreign_key "success_chances", "current_levels"
 end
