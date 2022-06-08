@@ -1,3 +1,32 @@
 <h1>home</h1>
 <button>Hone</button>
 <%= @success %>
+
+
+<div class="slidecontainer">
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+</div>
+
+<div class="avatar-wrapper">
+	<img class="profile-pic" src="" />
+	<div class="upload-button">
+		<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+	</div>
+	<input class="file-upload" type="file" accept="image/*"/>
+</div>
+
+
+<h2>Success chance / max success chance</h2>
+<div class="w3-section w3-light-grey">
+  <div class="w3-container w3-padding-small w3-blue w3-center" style="width:50%">50%</div>
+  <input type="range" min="1" max="60" value="25" class="slider" id="myRange">
+  <!-- bar fills depending on value -->
+</div>
+</body>
+
+<div class="w3-container">
+<h2>Bad luck protection</h2>
+<div class="w3-light-grey">
+  <div class="w3-container w3-blue w3-padding w3-center" style="width:25%">25%</div>
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+</div>
