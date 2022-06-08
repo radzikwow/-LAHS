@@ -1,7 +1,9 @@
 <h1>home</h1>
-<button>Hone</button>
 <%= @success %>
-
+<%= @current_level.success_chance.base %>
+<% @materials.each do |material| %>
+<%= "#{material.name} - #{material.amount}" %>
+<% end %>
 
 <div class="slidecontainer">
   <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
