@@ -9,6 +9,5 @@ class CalculationService
     chances = @current_level.success_chance.base
     array = rand(0..100)
     @success = array <= chances
-
   end
 end

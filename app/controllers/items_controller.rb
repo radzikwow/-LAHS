@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
     service.perform!
 
     if @item.update(current_level: @current_level)
-      redirect_to root_path(current_level: @current_level)
+      redirect_to pages_path(current_level: @current_level)
     else
       render :index
     end
