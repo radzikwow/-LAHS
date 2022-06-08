@@ -2,6 +2,6 @@
 <%= @success %>
 
 <%= @current_level.success_chance.base %>
-<% @current_level.materials.where(item: @item.id).each do |material| %>
+<% @materials.each do |material| %>
 <%= "#{material.name} - #{material.amount}" %>
 <% end %>

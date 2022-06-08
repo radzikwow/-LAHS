@@ -9,6 +9,21 @@ p "Creating an attempt"
 attempt = Attempt.create!
 p "Creating a current level"
 
+def create_materials(current_level, amount)
+  Item.all.each do |item|
+    Material.create!(item: item, name: "shards", amount: amount, current_level: current_level)
+    Material.create!(item: item, name: "gold", amount: amount, current_level: current_level)
+    Material.create!(item: item, name: "silver", amount: amount, current_level: current_level)
+    Material.create!(item: item, name: "leapstone", amount: amount, current_level: current_level)
+    Material.create!(item: item, name: "oreha", amount: amount, current_level: current_level)
+    if item.name == "weapon"
+      Material.create!(item: item, name: "destruction", amount: amount, current_level: current_level)
+    else
+      Material.create!(item: item, name: "guardian", amount: amount, current_level: current_level)
+    end
+  end
+end
+
 # levels from 0-6
 7.times do |i|
   current_level = CurrentLevel.create!(level: i)
@@ -47,125 +62,50 @@ end
 end
 
 p "Creating items"
-item1 = Item.create!(name: "weapon", item_type: "weapon", current_level: current_level, attempt: attempt)
-5.times do |item|
-  Item.create!(name: "helmet", item_type: "armour", current_level: current_level, attempt: attempt)
+Item.create!(name: "weapon", item_type: "weapon", current_level: current_level, attempt: attempt)
+
+armours = ["helmet", "shoulders", "armour", "pants", "gloves"]
+armours.each do |armour|
+  Item.create!(name: armour, item_type: "armour", current_level: current_level, attempt: attempt)
 end
-item2 = Item.find_by(name: "helmet")
+
 p "Creating materials"
 
 # levels from 0-6
 7.times do |i|
-  current_level = CurrentLevel.find_by(level:i)
-  Material.create!(item: item1, name: "shards", amount: 10, current_level: current_level)
-  Material.create!(item: item1, name: "gold", amount: 10, current_level: current_level)
-  Material.create!(item: item1, name: "silver", amount: 10, current_level: current_level)
-  Material.create!(item: item1, name: "leapstone", amount: 10, current_level: current_level)
-  Material.create!(item: item1, name: "destruction", amount: 10, current_level: current_level)
-  Material.create!(item: item1, name: "oreha", amount: 10, current_level: current_level)
-  Material.create!(item: item2, name: "gold", amount: 10, current_level: current_level)
-  Material.create!(item: item2, name: "shards", amount: 10, current_level: current_level)
-  Material.create!(item: item2, name: "silver", amount: 10, current_level: current_level)
-  Material.create!(item: item2, name: "leapstone", amount: 10, current_level: current_level)
-  Material.create!(item: item2, name: "guardian", amount: 10, current_level: current_level)
-  Material.create!(item: item2, name: "oreha", amount: 10, current_level: current_level)
+  current_level = CurrentLevel.find_by(level: i)
+  create_materials(current_level, 10)
 end
 
-  # level 7
-current_level = CurrentLevel.find_by(level:7)
-Material.create!(item: item1, name: "shards", amount: 20, current_level: current_level)
-Material.create!(item: item1, name: "gold", amount: 20, current_level: current_level)
-Material.create!(item: item1, name: "silver", amount: 20, current_level: current_level)
-Material.create!(item: item1, name: "leapstone", amount: 20, current_level: current_level)
-Material.create!(item: item1, name: "destruction", amount: 20, current_level: current_level)
-Material.create!(item: item1, name: "oreha", amount: 20, current_level: current_level)
-Material.create!(item: item2, name: "gold", amount: 20, current_level: current_level)
-Material.create!(item: item2, name: "shards", amount: 20, current_level: current_level)
-Material.create!(item: item2, name: "silver", amount: 20, current_level: current_level)
-Material.create!(item: item2, name: "leapstone", amount: 20, current_level: current_level)
-Material.create!(item: item2, name: "guardian", amount: 20, current_level: current_level)
-Material.create!(item: item2, name: "oreha", amount: 20, current_level: current_level)
+# level 7
+current_level = CurrentLevel.find_by(level: 7)
+create_materials(current_level, 20)
 
 # level 8
-current_level = CurrentLevel.find_by(level:8)
-Material.create!(item: item1, name: "shards", amount: 40, current_level: current_level)
-Material.create!(item: item1, name: "gold", amount: 40, current_level: current_level)
-Material.create!(item: item1, name: "silver", amount: 40, current_level: current_level)
-Material.create!(item: item1, name: "leapstone", amount: 40, current_level: current_level)
-Material.create!(item: item1, name: "destruction", amount: 40, current_level: current_level)
-Material.create!(item: item1, name: "oreha", amount: 40, current_level: current_level)
-Material.create!(item: item2, name: "gold", amount: 40, current_level: current_level)
-Material.create!(item: item2, name: "shards", amount: 40, current_level: current_level)
-Material.create!(item: item2, name: "silver", amount: 40, current_level: current_level)
-Material.create!(item: item2, name: "leapstone", amount: 40, current_level: current_level)
-Material.create!(item: item2, name: "guardian", amount: 40, current_level: current_level)
-Material.create!(item: item2, name: "oreha", amount: 40, current_level: current_level)
+current_level = CurrentLevel.find_by(level: 8)
+create_materials(current_level, 40)
 
 # level 9 - 11
 3.times do |i|
-  current_level = CurrentLevel.find_by(level:i + 9)
-  Material.create!(item: item1, name: "shards", amount: 80, current_level: current_level)
-  Material.create!(item: item1, name: "gold", amount: 80, current_level: current_level)
-  Material.create!(item: item1, name: "silver", amount: 80, current_level: current_level)
-  Material.create!(item: item1, name: "leapstone", amount: 80, current_level: current_level)
-  Material.create!(item: item1, name: "destruction", amount: 80, current_level: current_level)
-  Material.create!(item: item1, name: "oreha", amount: 80, current_level: current_level)
-  Material.create!(item: item2, name: "gold", amount: 80, current_level: current_level)
-  Material.create!(item: item2, name: "shards", amount: 80, current_level: current_level)
-  Material.create!(item: item2, name: "silver", amount: 80, current_level: current_level)
-  Material.create!(item: item2, name: "leapstone", amount: 80, current_level: current_level)
-  Material.create!(item: item2, name: "guardian", amount: 80, current_level: current_level)
-  Material.create!(item: item2, name: "oreha", amount: 80, current_level: current_level)
+  current_level = CurrentLevel.find_by(level: i + 9)
+  create_materials(current_level, 80)
 
 end
 # level 12 - 14
 3.times do |i|
-  current_level = CurrentLevel.find_by(level:i + 12)
-  Material.create!(item: item1, name: "shards", amount: 160, current_level: current_level)
-  Material.create!(item: item1, name: "gold", amount: 160, current_level: current_level)
-  Material.create!(item: item1, name: "silver", amount: 160, current_level: current_level)
-  Material.create!(item: item1, name: "leapstone", amount: 160, current_level: current_level)
-  Material.create!(item: item1, name: "destruction", amount: 160, current_level: current_level)
-  Material.create!(item: item1, name: "oreha", amount: 160, current_level: current_level)
-  Material.create!(item: item2, name: "gold", amount: 160, current_level: current_level)
-  Material.create!(item: item2, name: "shards", amount: 160, current_level: current_level)
-  Material.create!(item: item2, name: "silver", amount: 160, current_level: current_level)
-  Material.create!(item: item2, name: "leapstone", amount: 160, current_level: current_level)
-  Material.create!(item: item2, name: "guardian", amount: 160, current_level: current_level)
-  Material.create!(item: item2, name: "oreha", amount: 160, current_level: current_level)
+  current_level = CurrentLevel.find_by(level: i + 12)
+  create_materials(current_level, 160)
 
 end
 # level 15 - 17
 3.times do |i|
-  current_level = CurrentLevel.find_by(level:i + 15)
-  Material.create!(item: item1, name: "shards", amount: 320, current_level: current_level)
-  Material.create!(item: item1, name: "gold", amount: 320, current_level: current_level)
-  Material.create!(item: item1, name: "silver", amount: 320, current_level: current_level)
-  Material.create!(item: item1, name: "leapstone", amount: 320, current_level: current_level)
-  Material.create!(item: item1, name: "destruction", amount: 320, current_level: current_level)
-  Material.create!(item: item1, name: "oreha", amount: 320, current_level: current_level)
-  Material.create!(item: item2, name: "gold", amount: 320, current_level: current_level)
-  Material.create!(item: item2, name: "shards", amount: 320, current_level: current_level)
-  Material.create!(item: item2, name: "silver", amount: 320, current_level: current_level)
-  Material.create!(item: item2, name: "leapstone", amount: 320, current_level: current_level)
-  Material.create!(item: item2, name: "guardian", amount: 320, current_level: current_level)
-  Material.create!(item: item2, name: "oreha", amount: 320, current_level: current_level)
+  current_level = CurrentLevel.find_by(level: i + 15)
+  create_materials(current_level, 320)
 
 end
 # level 18 - 19
 2.times do |i|
-  current_level = CurrentLevel.find_by(level:i + 18)
-  Material.create!(item: item1, name: "shards", amount: 640, current_level: current_level)
-  Material.create!(item: item1, name: "gold", amount: 640, current_level: current_level)
-  Material.create!(item: item1, name: "silver", amount: 640, current_level: current_level)
-  Material.create!(item: item1, name: "leapstone", amount: 640, current_level: current_level)
-  Material.create!(item: item1, name: "destruction", amount: 640, current_level: current_level)
-  Material.create!(item: item1, name: "oreha", amount: 640, current_level: current_level)
-  Material.create!(item: item2, name: "gold", amount: 640, current_level: current_level)
-  Material.create!(item: item2, name: "shards", amount: 640, current_level: current_level)
-  Material.create!(item: item2, name: "silver", amount: 640, current_level: current_level)
-  Material.create!(item: item2, name: "leapstone", amount: 640, current_level: current_level)
-  Material.create!(item: item2, name: "guardian", amount: 640, current_level: current_level)
-  Material.create!(item: item2, name: "oreha", amount: 640, current_level: current_level)
+  current_level = CurrentLevel.find_by(level: i + 18)
+  create_materials(current_level, 640)
 end
 p "All instances created!"
