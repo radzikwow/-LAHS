@@ -1,14 +1,14 @@
-<div class="container">
+<div class="container" data-controller="form">
 
-  <% @items.each do |item| %>
-    <div class="item-container">
+  <%= simple_form_for(:item, url: items_update_all_path, data: {'form-target': 'form', action: 'submit->form#send'}) do |f|%>
+    <% @items.each do |item| %>
+    <div class="item-container" data-form-target='input'>
       <%# insert img here %>
-      <h2> <%= item.name %> </h2>
-      <%= simple_form_for(item) do |f|%>
-        <%= f.input :name, as: :hidden, input_html: {value: item.name }%>
-        <%= f.input :current_level, as: :numeric, input_html: { min: '1', max: '19' } %>
-        <%= f.submit %>
-      <% end %>
+      <h2> <%= item.name.capitalize %> </h2>
+        <%= f.input "#{item.id}", as: :hidden, input_html: {value: item.name}%>
+        <%= f.input :current_level, as: :numeric, input_html: { min: '0', max: '19' } %>
     </div>
+    <% end %>
+  <%= f.submit %>
   <% end %>
 </div>
