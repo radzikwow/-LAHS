@@ -1,3 +1,4 @@
+
 <div class="container mt-5">
 <div class="d-flex justify-content-center">
 <%=image_tag("pants.png", class:"selected_item")%>
@@ -21,6 +22,14 @@
 </div>
 
 <br><br>
+
+<h1>home</h1>
+<%= @success %>
+<%= @current_level.success_chance.base %>
+<% @materials.each do |material| %>
+<%= "#{material.name} - #{material.amount}" %>
+<% end %>
+
 
 <div class="w3-light-grey w3-xlarge mb-5" style="width:75%">
   <div class="w3-container w3-green" style="width:50%">50%</div>
