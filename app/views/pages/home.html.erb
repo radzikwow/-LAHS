@@ -1,14 +1,19 @@
 <h1>home</h1>
 
+<%= link_to("Chose items", root_path) %>
+
+<%= @success %>
+<%= @current_level.success_chance.base %>
+<%= @total_attempt_counter %>
+
 <ul class="list-inline">
   <% @items.each do |item| %>
     <li><%= item.name %> lvl. <%= item.current_level.level %></li>
   <% end %>
 </ul>
-<!--<%#= @success %>
-<%#= @current_level.success_chance.base %>
-<%#= @total_attempt_counter %>
 
+
+<!--
 <%# @materials.each do |material| %>
   <%#= "#{material.name.capitalize} - #{material.amount}" %>
 <%# end %> -->

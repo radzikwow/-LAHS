@@ -28,13 +28,11 @@ export default class extends Controller {
       // console.log(obj)
     });
 
-    // console.log(new_inputs)
+    console.log(JSON.stringify(new_inputs))
 
     fetch('http://127.0.0.1:3000//items/update-all', {
       method: 'POST',
       headers: { "Content-Type": 'application/json'},
-      body: JSON.stringify(new_inputs)}).then(response => response.json()).then((data) => {
-      console.log(data)
-    });
+      body: JSON.stringify(new_inputs)}).then(response => response.text()).then((data)=>console.log(data));
   }
 }
