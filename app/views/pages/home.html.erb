@@ -1,4 +1,6 @@
-<div class="container mt-5">
+
+<div class="container mt-5" data-controller="honing">
+
   <%= link_to("Chose items", root_path) %>
   <div class="d-flex justify-content-center">
     <%=image_tag("pants.png", class:"selected_item")%>
@@ -18,19 +20,22 @@
     <div class="col-8 d-flex align-items-center" style="flex-direction: column;">
       <div class="w3-light-grey w3-xlarge" style="width:75%">
         <div class="w3-container w3-green" style="width:50%">
-          50%
+
+          <%= @current_level.success_chance.base %>%
+
         </div>
         <h3 class="SliderText"> Success chance / max success chance</h3>
       </div>
 
-      <h1><%= @success ? "Success" : "Fail" %></h1>
 
-<%= @current_level.success_chance.base %>
+      <h1></h1>
+      <h1 class="d-none" data-honing-target="success"><%= @success ? "Success" : "Fail" %></h1>
 
-<div class="w3-light-grey w3-xlarge mb-5" style="width:75%">
-  <div class="w3-container w3-green" style="width:50%">50%</div>
-  <h3 class="SliderText" id="protection"> Bad luck protection %</h3>
-</div>
+
+  <div class="w3-light-grey w3-xlarge mb-5" style="width:75%">
+    <div class="w3-container w3-green" style="width:50%">50%</div>
+    <h3 class="SliderText" id="protection"> Bad luck protection %</h3>
+  </div>
   <div class="materials-sliders w-75">
     <div class="d-flex w-100 align-items-center justify-content-around">
       <%=image_tag("pants.png", class:"material_icon")%>
@@ -121,14 +126,12 @@
       <div class="d-flex justify-content-between w-100">
         <p>Total</p>
         <p><small><%= @total_attempt_counter %></small></p>
-
       </div>
     </div>
 
   </div>
 </div>
 
-
-<div class="d-flex justify-content-center w-100 my-5">
-<%=link_to"hone", root_path, class:"button"%>
+<div class="d-flex justify-content-center w-100 my-5" data-action="click->honing#hone">
+  <h3 class="button">Hone</h3>
 </div>
