@@ -62,11 +62,11 @@ end
 end
 
 p "Creating items"
-Item.create!(name: "weapon", item_type: "weapon", current_level: current_level, attempt: attempt)
+Item.create!(name: "weapon", item_type: "weapon", order: 6, current_level: current_level, attempt: attempt)
 
 armours = ["helmet", "shoulders", "armour", "pants", "gloves"]
-armours.each do |armour|
-  Item.create!(name: armour, item_type: "armour", current_level: current_level, attempt: attempt)
+armours.each_with_index do |armour, index|
+  Item.create!(name: armour, item_type: "armour", order: index + 1, current_level: current_level, attempt: attempt)
 end
 
 p "Creating materials"
