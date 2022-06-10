@@ -1,1 +1,45 @@
 // Specific CSS for your home-page
+.item_pic{
+  width: 50%;
+  object-fit: cover;
+}
+
+.items{
+  background-color: $dark-brown;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.material_icon{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 75%;
+  grid-gap: 32px;
+}
+
+.selected_item{
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  margin: auto;
+}
+
+.Attempts{
+  background-color: $dark-brown;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
