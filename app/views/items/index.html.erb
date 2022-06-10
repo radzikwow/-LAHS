@@ -1,14 +1,13 @@
 <div class="container">
 
-  <% @items.each do |item| %>
+  <%= simple_form_for(:item, url: pages_path, method: "get") do |f|%>
+    <% @items.each do |item| %>
     <div class="item-container">
       <%# insert img here %>
-      <h2> <%= item.name %> </h2>
-      <%= simple_form_for(item) do |f|%>
-        <%= f.input :name, as: :hidden, input_html: {value: item.name }%>
-        <%= f.input :current_level, as: :numeric, input_html: { min: '1', max: '19' } %>
-        <%= f.submit %>
-      <% end %>
+      <h2> <%= item.name.capitalize %> </h2>
+        <%= f.input "#{item.name}", as: :numeric, input_html: { min: '0', max: '19' } %>
     </div>
+    <% end %>
+  <%= f.submit %>
   <% end %>
 </div>

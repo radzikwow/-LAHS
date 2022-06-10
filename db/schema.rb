@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_07_102500) do
+ActiveRecord::Schema.define(version: 2022_06_09_145403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2022_06_07_102500) do
   end
 
   create_table "current_levels", force: :cascade do |t|
-    t.integer "level"
+    t.integer "level", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2022_06_07_102500) do
     t.bigint "attempt_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "order"
     t.index ["attempt_id"], name: "index_items_on_attempt_id"
     t.index ["current_level_id"], name: "index_items_on_current_level_id"
   end

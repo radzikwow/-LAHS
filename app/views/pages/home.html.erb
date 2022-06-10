@@ -24,11 +24,24 @@
 <br><br>
 
 <h1>home</h1>
+
+<%= link_to("Chose items", root_path) %>
+
 <%= @success %>
 <%= @current_level.success_chance.base %>
-<% @materials.each do |material| %>
-<%= "#{material.name} - #{material.amount}" %>
-<% end %>
+<%= @total_attempt_counter %>
+
+<ul class="list-inline">
+  <% @items.each do |item| %>
+    <li><%= item.name %> lvl. <%= item.current_level.level %></li>
+  <% end %>
+</ul>
+
+
+<!--
+<%# @materials.each do |material| %>
+  <%#= "#{material.name.capitalize} - #{material.amount}" %>
+<%# end %> -->
 
 
 <div class="w3-light-grey w3-xlarge mb-5" style="width:75%">
