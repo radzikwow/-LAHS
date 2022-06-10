@@ -1,44 +1,31 @@
 <div class="container mt-5">
-<div class="d-flex justify-content-center">
-<%=image_tag("pants.png", class:"selected_item")%>
-</div>
+  <%= link_to("Chose items", root_path) %>
+  <div class="d-flex justify-content-center">
+    <%=image_tag("pants.png", class:"selected_item")%>
+  </div>
+
   <div class="row mt-5">
     <div class="col-2">
       <h3 style="text-align: center;">Gear</h3>
       <div class="items">
-      <%=image_tag("pants.png", class:"item_pic")%>
-      <%=image_tag("gloves.png", class:"item_pic")%>
-      <%=image_tag("helmet.png", class:"item_pic")%>
-      <%=image_tag("weapon.png", class:"item_pic")%>
-      <%=image_tag("shoulders.png", class:"item_pic")%>
-      <%=image_tag("armour.png", class:"item_pic")%>
+        <% @items.each do |item| %>
+          <%=image_tag("#{item.name}.png", class:"item_pic")%>
+          <p>Level: <%= item.current_level.level %></p>
+        <% end %>
       </div>
     </div>
+
     <div class="col-8 d-flex align-items-center" style="flex-direction: column;">
       <div class="w3-light-grey w3-xlarge" style="width:75%">
-  <div class="w3-container w3-green" style="width:50%">50%</div>
-  <h3 class="SliderText"> Success chance / max success chance</h3>
-</div>
+        <div class="w3-container w3-green" style="width:50%">
+          50%
+        </div>
+        <h3 class="SliderText"> Success chance / max success chance</h3>
+      </div>
 
-<br><br>
+      <h1><%= @success ? "Success" : "Fail" %></h1>
 
-<h1>home</h1>
-
-<%= link_to("Chose items", root_path) %>
-
-<%= @success %>
 <%= @current_level.success_chance.base %>
-<%= @total_attempt_counter %>
-
-<ul class="list-inline">
-  <% @items.each do |item| %>
-    <li><%= item.name %> lvl. <%= item.current_level.level %></li>
-  <% end %>
-</ul>
-
-
-
-
 
 <div class="w3-light-grey w3-xlarge mb-5" style="width:75%">
   <div class="w3-container w3-green" style="width:50%">50%</div>
@@ -133,7 +120,8 @@
       </div>
       <div class="d-flex justify-content-between w-100">
         <p>Total</p>
-        <p><small>9</small></p>
+        <p><small><%= @total_attempt_counter %></small></p>
+
       </div>
     </div>
 
