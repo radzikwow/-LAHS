@@ -4,6 +4,7 @@ class PagesController < ApplicationController
 
     @current_levels = []
     @items = []
+    @optionals = ["solar grace", "solar blessing", "solar protection"]
 
     params[:item].each_key do |item|
       @item = Item.find_by(name: item)

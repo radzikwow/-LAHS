@@ -1,14 +1,18 @@
+<div class="header">
+  <h1>CHOOSE YOUR ITEMS CURRENT LEVEL</h1>
+</div>
 <div class="container">
   <div class="form">
-    <%= simple_form_for(:item, url: pages_path, method: "get") do |f|%>
-      <% @items.each do |item| %>
-        <div class="item-container">
-          <%= image_tag "items/#{item.name}.png" %>
-          <h2> <%= item.name.capitalize %> </h2>
-          <%= f.input "#{item.name}", :collection => 0..19, input_html: { min: '0', max: '19' } %>
-        </div>
+    <div class="form-conatiner">
+      <%= simple_form_for(:item, url: pages_path, method: "get") do |f|%>
+        <% @items.each do |item| %>
+          <div class="item-container">
+            <%= image_tag "items/#{item.name}.png" %>
+            <%= f.input "#{item.name}", :collection => 0..19, input_html: { min: '0', max: '19' } %>
+          </div>
+        <% end %>
+        <%= f.submit %>
       <% end %>
-      <%= f.submit %>
-    <% end %>
-  </div>    
+    </div>
+  </div>
 </div>
