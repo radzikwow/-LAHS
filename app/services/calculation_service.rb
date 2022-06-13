@@ -1,5 +1,5 @@
 class CalculationService
-  attr_reader :success
+  attr_reader :success, :current_level
 
   def initialize(current_level, item)
     @current_level = current_level
