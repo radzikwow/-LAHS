@@ -1,69 +1,25 @@
 <div class="col-2">
-      <h3 style="text-align: center;">Counter</h3>
-      <div class="Attempts">
-        <div class="counter">
-  <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
-  <div class="notification-content">
-    <h5>100/1000</h5>
-  </div>
-</div>
-<div class="counter">
-  <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
-  <div class="notification-content">
-    <h5>100/1000</h5>
-  </div>
-</div>
-<div class="counter">
-  <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
-  <div class="notification-content">
-    <h5>100/1000</h5>
-  </div>
-</div>
-<div class="counter">
-  <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
-  <div class="notification-content">
-    <h5>100/1000</h5>
-  </div>
-</div>
-<div class="counter">
-  <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
-  <div class="notification-content">
-    <h5>100/1000</h5>
-  </div>
-</div>
-<div class="counter">
-  <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
-  <div class="notification-content">
-    <h5>100/1000</h5>
-  </div>
-</div>
-<div class="counter">
-  <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
-  <div class="notification-content">
-    <h5>100/1000</h5>
-  </div>
-</div>
-<div class="counter">
-  <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
-  <div class="notification-content">
-    <h5>100/1000</h5>
-  </div>
-</div>
+  <h3 style="text-align: center;">Counter</h3>
+  <div class="Attempts">
+    <% @materials.each do |material| %>
+      <div class="counter">
+        <%= image_tag "materials/#{material.name}" %>
+        <div class="notification-content">
+          <h5><%=material.amount%></h5>
+        </div>
       </div>
-      <h4 class="mt-4">Attempt counter</h4>
-      <div class="Attempts">
-        <div class="d-flex justify-content-between w-100">
-          <p>Current</p>
-          <p><small>9</small></p>
-        </div>
-        <div class="d-flex justify-content-between w-100">
-          <p>Total</p>
-          <p><small>9</small></p>
-        </div>
+    <% end %>
+   </div>
+
+    <h4 class="mt-4">Attempt counter</h4>
+    <div class="Attempts">
+      <div class="d-flex justify-content-between w-100">
+        <p>Current</p>
+        <p><small>9</small></p>
+      </div>
+      <div class="d-flex justify-content-between w-100">
+        <p>Total</p>
+        <p><small><%= @total_attempt_counter %></small></p>
       </div>
     </div>
   </div>
-</div>
-<div class="d-flex justify-content-center w-100 my-5">
-<%=link_to"hone", root_path, class:"button"%>
-</div>
