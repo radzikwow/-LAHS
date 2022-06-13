@@ -1,6 +1,7 @@
-<div class="container mt-5" data-controller="honing">
+<div class="container mt-5" data-controller="computations" data-controller="active">
+
   <%= link_to("Chose items", root_path) %>
-  <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center" data-active-target="selected">
     <%=image_tag("items/pants.png", class:"selected_item")%>
   </div>
 
@@ -10,7 +11,7 @@
       <div class="items">
         <% @items.each do |item| %>
           <%=image_tag("items/#{item.name}.png", class:"item_pic")%>
-          <p>Level: <%= item.current_level.level %></p>
+          <p data-action="click->active#select_active">Level: <%= item.current_level.level %></p>
         <% end %>
       </div>
     </div>
@@ -19,7 +20,7 @@
       <div class="w3-light-grey w3-xlarge" style="width:75%">
         <div class="w3-container w3-green" style="width:50%">
 
-          <%= @current_level.success_chance.base %>%
+          <%= @current_levels[0].success_chance.base %>%
 
         </div>
         <h3 class="SliderText"> Success chance / max success chance</h3>
@@ -27,7 +28,7 @@
 
 
       <h1></h1>
-      <h1 class="d-none" data-honing-target="success"><%= @success ? "Success" : "Fail" %></h1>
+      <h1 data-computations-target="success"></h1>
 
 
   <div class="w3-light-grey w3-xlarge mb-5" style="width:75%">
@@ -130,6 +131,7 @@
   </div>
 </div>
 
-<div class="d-flex justify-content-center w-100 my-5" data-action="click->honing#hone">
-  <h3 class="button">Hone</h3>
+<div class="d-flex justify-content-center w-100 my-5"  >
+  <div data-current-level="<%= @service.current_level.level %>" data-computations-target="service">
+  <h3 class="button" data-action="click->computations#hone">Hone</h3>
 </div>

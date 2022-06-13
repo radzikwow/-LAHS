@@ -1,5 +1,5 @@
 class CalculationService
-  attr_reader :success
+  attr_reader :success, :current_level
 
   def initialize(current_level, item)
     @current_level = current_level
@@ -8,9 +8,9 @@ class CalculationService
   end
 
   def perform!
-  chances = self.chance
-  array = rand(0..100)
-  @success = array <= chances.base
+    chances = self.chance
+    array = rand(0..100)
+    @success = array <= chances.base
   end
 
   private
