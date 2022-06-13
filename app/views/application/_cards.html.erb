@@ -1,34 +1,50 @@
 <div class="cards">
   <div class="grid mt-5">
+    <% @current_level.materials.each do |material| %>
+      <div><%= image_tag "materials/#{material.name}.png" %></div>
+    <% end %>
+  </div>
+</div>
+
+
+
+<!--
     <div class="card-category" style="background-color:white; color:black;">
       Shards <br>
-      <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> <br>
+      <%= image_tag "materials/shards.png" %>
+      <%# <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> <br> %>
       1000 <br>
     </div>
     <div class="card-category" style="background-color:white; color:black;">
       Gold <br>
-      <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> <br>
+      <%= image_tag "materials/gold.png" %>
+      <%# <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> <br> %>
       1000 <br>
     </div>
     <div class="card-category" style="background-color:white; color:black;">
       Silver <br>
-      <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> <br>
+      <%= image_tag "materials/silver.png" %>
+      <%# <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> <br> %>
       1000 <br>
     </div>
     <div class="card-category" style="background-color:white; color:black;">
       Leapstone <br>
-      <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> <br>
+      <%= image_tag "materials/leapstone.png" %>
+      <%# <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> <br> %>
       1000 <br>
     </div>
     <div class="card-category" style="background-color:white; color:black;">
       Oreha <br>
-      <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> <br>
+      <%= image_tag "materials/oreha.png" %>
+      <%# <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> <br> %>
       1000 <br>
     </div>
     <div class="card-category" style="background-color:white; color:black;">
       Destruction/Guardian <br>
-      <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> <br>
+      <%= image_tag "materials/destruction.png" %>
+      <%# <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> <br> %>
       1000 <br>
     </div>
   </div>
 </div>
+-->

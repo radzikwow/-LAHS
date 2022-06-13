@@ -1,9 +1,9 @@
-<div class="col-2">
+<div class="item-list">
   <h3 style="text-align: center;">Gear</h3>
   <div class="items">
     <% @items.each do |item| %>
       <%=image_tag("items/#{item.name}.png", class:"item_pic")%>
-      <p>Level: <%= item.current_level.level %></p>
+      <p>+<%= item.current_level.level %></p>
     <% end %>
   </div>
 </div>
