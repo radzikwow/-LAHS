@@ -33,5 +33,4 @@ class CalculationService
       SuccessChance.find_by(base: 5)
     end
   end
-
 end
