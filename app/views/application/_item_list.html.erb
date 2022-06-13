@@ -1,6 +1,6 @@
 <div class="item-list">
   <h3 style="text-align: center;">Gear</h3>
-  <div class="items" data-action="click->active#select_items">
+  <div class="items" data-action="click->active#select">
     <% @items.each do |item| %>
       <%=image_tag("items/#{item.name}.png", class:"item_pic")%>
       <p>+<%= item.current_level.level %></p>

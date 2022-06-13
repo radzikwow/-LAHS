@@ -8,7 +8,7 @@ export default class extends Controller {
     console.log("hello")
   }
 
-  selectActive(event){
+  select(event){
     console.log(this.selectedTarget)
   }
 }
