@@ -1,12 +1,6 @@
-.container-form {
- display: flex;
- justify-content: space-around;
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  justify-content: space-between;
 }
-
-.item-container {
-  margin-bottom: 40px;
-}
-
-// .container {
-//   justify-content: space-between;
-// }

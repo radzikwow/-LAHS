@@ -1,26 +1,51 @@
-<div class="materials-sliders w-75">
-  <div class="d-flex w-100 align-items-center justify-content-around">
-    <%=image_tag("materials/solar grace.png", class:"material_icon")%>
-    <div class="slidecontainer">
-      <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+<div class="container-sliders" data-controller="slider">
+<!--  <div class="solar-grace-slider">
+    <div style="d-flex">
+      <%=image_tag("materials/solar grace.png", class:"material_icon")%>
+      <p>0/24</p>
     </div>
-    <p style="transform: translate(-55px, -20px);">1/12</p>
+    <div class="slider">
+      <input type="range" min="0" max="24" value="0" class="slider" id="myRange">
+    </div>
     <p>%</p>
   </div>
-  <div class="d-flex w-100 align-items-center justify-content-around mt-5">
-    <%=image_tag("materials/solar blessing.png", class:"material_icon")%>
-    <div class="slidecontainer">
-      <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+
+  <div class="solar-blessing-slider">
+    <div style="d-flex">
+      <%=image_tag("materials/solar blessing.png", class:"material_icon")%>
+      <p>0/12</p>
     </div>
-    <p style="transform: translate(-55px, -20px);">1/12</p>
+    <div class="slider">
+      <input type="range" min="0" max="12" value="0" class="slider" id="myRange">
+    </div>
     <p>%</p>
   </div>
-  <div class="d-flex w-100 align-items-center justify-content-around mt-5">
-    <%=image_tag("materials/solar protection.png", class:"material_icon")%>
-    <div class="slidecontainer">
-      <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+
+  <div class="solar-protection-slider">
+    <div style="d-flex">
+      <%=image_tag("materials/solar protection.png", class:"material_icon")%>
+      <p>0/6</p>
     </div>
-    <p style="transform: translate(-55px, -20px);">1/12</p>
+    <div class="slider">
+      <input type="range" min="0" max="6" value="0" class="slider" id="myRange">
+    </div>
     <p>%</p>
   </div>
+ -->
+
+
+  <% @optionals.each_with_index do |optional, index| %>
+    <div class="solar-blessing-slider">
+      <div style="d-flex">
+        <%=image_tag("materials/solar blessing.png", class:"material_icon")%>
+        <p data-slider-target="number" id="<%= index %>">0/12</p>
+      </div>
+      <div class="slider">
+        <input type="range" min="0" max="12" value="0" class="slider" id="<%= index %>" data-action="input->slider#update">
+      </div>
+      <p>%</p>
+    </div>
+  <% end %>
 </div>
+
+<!--  -->

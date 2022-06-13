@@ -6,11 +6,27 @@
   color: black;
   transform: translate(80px, -36px);
 }
-#protection{
-  transform: translate(160px, -36px);
-}
+
 
 .slider{
   width: 300px;
-  margin-left: 25px;
+  margin: 15px
+}
+
+.solar-grace-slider {
+ display: flex;
+ padding: 10px;
+ align-items: center;
+}
+
+.solar-blessing-slider {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+}
+
+.solar-protection-slider {
+  display: flex;
+  padding: 10px;
+  align-items: center;
 }

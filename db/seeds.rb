@@ -75,6 +75,7 @@ p "Creating materials"
 7.times do |i|
   current_level = CurrentLevel.find_by(level: i)
   create_materials(current_level, 10)
+  i + 1
 end
 
 # level 7
@@ -89,23 +90,24 @@ create_materials(current_level, 40)
 3.times do |i|
   current_level = CurrentLevel.find_by(level: i + 9)
   create_materials(current_level, 80)
-
+  i + 1
 end
 # level 12 - 14
 3.times do |i|
   current_level = CurrentLevel.find_by(level: i + 12)
   create_materials(current_level, 160)
-
+  i + 1
 end
 # level 15 - 17
 3.times do |i|
   current_level = CurrentLevel.find_by(level: i + 15)
   create_materials(current_level, 320)
-
+  i + 1
 end
 # level 18 - 19
 2.times do |i|
   current_level = CurrentLevel.find_by(level: i + 18)
   create_materials(current_level, 640)
+  i + 1
 end
 p "All instances created!"
