@@ -1,19 +1,19 @@
 <div class="container mt-5" data-controller="honing">
-  <%= link_to("Chose items", root_path) %>
-  <div class="d-flex justify-content-center">
-    <%=image_tag("items/pants.png", class:"selected_item")%>
-  </div>
 
-  <div class="row mt-5">
+  <!-- DIV FOR ITEM LIST (LEFT) -->
+  <div class="container-left">
     <%= render "item_list" %>
-
-    <div class="col-8 d-flex align-items-center" style="flex-direction: column;">
-      <%= render "progress_bars" %>
-      <%= render "optional_mats" %>
-      <%= render "cards" %>
-    </div>
+  </div>
+  <!-- DIV FOR ACTIVE ITEM / PROGRESS BARS / OPTIONALS / CARDS / HONE BTN (MIDDLE) -->
+  <div class="container-middle">
+    <%= render "active_item" %>
+    <%= render "progress_bars" %>
+    <%= render "optional_mats" %>
+    <%= render "cards" %>
+    <%= render "hone" %>
+  </div>
+  <!-- DIV FOR COUNTERS (RIGHT) -->
+  <div class="container-right">
     <%= render "counter" %>
-   <%# HERE %>
-</div>
-
-<%= render "hone" %>
+  </div>
+</div> <!-- container -->

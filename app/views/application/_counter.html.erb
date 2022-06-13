@@ -3,7 +3,7 @@
   <div class="Attempts">
     <% @materials.each do |material| %>
       <div class="counter">
-        <%= image_tag "materials/#{material.name}" %>
+        <%= image_tag("materials/#{material.name}.png", class:"mat-pic")%>
         <div class="notification-content">
           <h5><%=material.amount%></h5>
         </div>
