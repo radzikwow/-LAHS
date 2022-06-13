@@ -4,10 +4,6 @@ import ContextModuleFactory from "webpack/lib/ContextModuleFactory"
 export default class extends Controller {
   static targets = [ "service", "success" ]
 
-  // connect() {
-  //   console.log("hi")
-  // }
-
   hone(event){
     this.successTarget.innerHTML = ""
     const level = this.serviceTarget.dataset.currentLevel

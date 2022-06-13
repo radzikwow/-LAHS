@@ -24,6 +24,5 @@ class PagesController < ApplicationController
     Attempt.create!
     # # counter for the total attemps made on the session
     @total_attempt_counter = Attempt.all.count - 1
-
   end
 end
