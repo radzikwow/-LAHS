@@ -1,137 +1,27 @@
 <div class="container mt-5" data-controller="computations" data-controller="active">
 
-  <%= link_to("Chose items", root_path) %>
-  <div class="d-flex justify-content-center" data-active-target="selected">
-    <%=image_tag("items/pants.png", class:"selected_item")%>
+  <!-- DIV FOR ITEM LIST (LEFT) -->
+  <div class="container-left">
+    <%= render "item_list" %>
   </div>
 
-  <div class="row mt-5">
-    <div class="col-2">
-      <h3 style="text-align: center;">Gear</h3>
-      <div class="items">
-        <% @items.each do |item| %>
-          <%=image_tag("items/#{item.name}.png", class:"item_pic")%>
-          <p data-action="click->active#select_active">Level: <%= item.current_level.level %></p>
-        <% end %>
-      </div>
-    </div>
+  <!-- DIV FOR ACTIVE ITEM / PROGRESS BARS / OPTIONALS / CARDS / HONE BTN (MIDDLE) -->
+  <div class="container-middle">
+    <%= render "active_item" %>
+    <h1 data-computations-target="success"></h1>
+    <%= render "progress_bars" %>
+    <%= render "optional_mats" %>
+    <%= render "cards" %>
+    <%= render "hone" %>
 
-    <div class="col-8 d-flex align-items-center" style="flex-direction: column;">
-      <div class="w3-light-grey w3-xlarge" style="width:75%">
-        <div class="w3-container w3-green" style="width:50%">
-
-          <%= @current_levels[0].success_chance.base %>%
-
-        </div>
-        <h3 class="SliderText"> Success chance / max success chance</h3>
-      </div>
-
-
-      <h1></h1>
-      <h1 data-computations-target="success"></h1>
-
-
-  <div class="w3-light-grey w3-xlarge mb-5" style="width:75%">
-    <div class="w3-container w3-green" style="width:50%">50%</div>
-    <h3 class="SliderText" id="protection"> Bad luck protection %</h3>
-  </div>
-  <div class="materials-sliders w-75">
-    <div class="d-flex w-100 align-items-center justify-content-around">
-      <%=image_tag("items/pants.png", class:"material_icon")%>
-      <p>extra mat</p>
-      <div class="slidecontainer">
-  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-      </div>
-      <p style="transform: translate(-55px, -20px);">1/12</p>
-      <p>% chance</p>
-    </div>
-      <div class="d-flex w-100 align-items-center justify-content-around mt-5">
-      <%=image_tag("items/pants.png", class:"material_icon")%>
-      <p>extra mat</p>
-      <div class="slidecontainer">
-  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-      </div>
-      <p style="transform: translate(-55px, -20px);">1/12</p>
-      <p>% chance</p>
-    </div>
-      <div class="d-flex w-100 align-items-center justify-content-around mt-5">
-      <%=image_tag("items/pants.png", class:"material_icon")%>
-      <p>extra mat</p>
-      <div class="slidecontainer">
-  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-      </div>
-      <p style="transform: translate(-55px, -20px);">1/12</p>
-      <p>% chance</p>
-    </div>
-  </div>
-
-
-  <div class="cards d-none">
-    <div class="grid mt-5">
-      <div class="card-category" style="background-color:white; color:black;">
-    Material 1 <br>
-    <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> <br>
-    1000/5000 <br>
-      </div>
-      <div class="card-category" style="background-color:white; color:black;">
-    Material 1 <br>
-    <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> <br>
-    1000/5000 <br>
-      </div>
-      <div class="card-category" style="background-color:white; color:black;">
-    Material 1 <br>
-    <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> <br>
-    1000/5000 <br>
-      </div>
-      <div class="card-category" style="background-color:white; color:black;">
-    Material 1 <br>
-    <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> <br>
-    1000/5000 <br>
-      </div>
-      <div class="card-category" style="background-color:white; color:black;">
-    Material 1 <br>
-    <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> <br>
-    1000/5000 <br>
-      </div>
-      <div class="card-category" style="background-color:white; color:black;">
-    Material 1 <br>
-    <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> <br>
-    1000/5000 <br>
-      </div>
-    </div>
-    </div>
-    </div>
-
-   <%# HERE %>
-  <div class="col-2">
-    <h3 style="text-align: center;">Counter</h3>
-    <div class="Attempts">
-      <% @materials.each do |material| %>
-        <div class="counter">
-          <%= image_tag "materials/#{material.name}" %>
-          <div class="notification-content">
-            <h5><%=material.amount%>/1000</h5>
-          </div>
-        </div>
-      <% end %>
-    </div>
-
-    <h4 class="mt-4">Attempt counter</h4>
-    <div class="Attempts">
-      <div class="d-flex justify-content-between w-100">
-        <p>Current</p>
-        <p><small>9</small></p>
-      </div>
-      <div class="d-flex justify-content-between w-100">
-        <p>Total</p>
-        <p><small><%= @total_attempt_counter %></small></p>
-      </div>
+    <div data-current-level="<%= @service.current_level.level %>" data-computations-target="service">
+      <h3 class="button" data-action="click->computations#hone">Hone</h3>
     </div>
 
   </div>
-</div>
+  <!-- DIV FOR COUNTERS (RIGHT) -->
+  <div class="container-right">
+    <%= render "counter" %>
+  </div>
 
-<div class="d-flex justify-content-center w-100 my-5"  >
-  <div data-current-level="<%= @service.current_level.level %>" data-computations-target="service">
-  <h3 class="button" data-action="click->computations#hone">Hone</h3>
-</div>
+</div> <!-- container -->

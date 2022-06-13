@@ -1,0 +1,19 @@
+<div class="container mt-5" data-controller="honing">
+  <%= link_to("Chose items", root_path) %>
+  <div class="d-flex justify-content-center">
+    <%=image_tag("items/pants.png", class:"selected_item")%>
+  </div>
+
+  <div class="row mt-5">
+    <%= render "item_list" %>
+
+    <div class="col-8 d-flex align-items-center" style="flex-direction: column;">
+      <%= render "progress_bars" %>
+      <%= render "optional_mats" %>
+      <%= render "cards" %>
+    </div>
+    <%= render "counter" %>
+   <%# HERE %>
+</div>
+
+<%= render "hone" %>
