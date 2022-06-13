@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = [ "selected" ]
 
   connect() {
-    console.log("hi")
+    console.log("hello")
   }
 
   selectActive(event){
