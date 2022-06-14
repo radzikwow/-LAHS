@@ -1,4 +1,17 @@
 <div class="container-sliders" data-controller="slider">
+  <% @optionals.each_with_index do |optional, index| %>
+    <div class="solar-blessing-slider">
+      <div style="d-flex align-items-end">
+        <%=image_tag("materials/#{optional}.png", class:"material_icon")%>
+        <p data-slider-target="number" id="<%= index %>">0/12</p>
+      </div>
+      <div class="slider">
+        <input type="range" min="0" max="12" value="0" class="slider" id="<%= index %>" data-action="input->slider#update">
+      </div>
+      <p>%</p>
+    </div>
+  <% end %>
+</div>
 <!--  <div class="solar-grace-slider">
     <div style="d-flex">
       <%=image_tag("materials/solar grace.png", class:"material_icon")%>
@@ -32,20 +45,5 @@
     <p>%</p>
   </div>
  -->
-
-
-  <% @optionals.each_with_index do |optional, index| %>
-    <div class="solar-blessing-slider">
-      <div style="d-flex">
-        <%=image_tag("materials/solar blessing.png", class:"material_icon")%>
-        <p data-slider-target="number" id="<%= index %>">0/12</p>
-      </div>
-      <div class="slider">
-        <input type="range" min="0" max="12" value="0" class="slider" id="<%= index %>" data-action="input->slider#update">
-      </div>
-      <p>%</p>
-    </div>
-  <% end %>
-</div>
 
 <!--  -->
