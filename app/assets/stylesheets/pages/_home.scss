@@ -4,15 +4,33 @@
   object-fit: cover;
 }
 
+.items-list > h3 {
+  text-align: center;
+
+  font-family: 'Vendome';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+
+  /* identical to box height */
+  color: #852f2f;
+}
+
 .items {
-  background-color: $dark-brown;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 200px;
-  height: 70vh;
+  border: 4px solid;
+  border-image-source: linear-gradient(90deg, rgba(255, 214, 0, 0) 0%, #FFF1A8 52.6%, rgba(255, 214, 0, 0) 100%);
+
+  padding: 31px 39px;
+  gap: 10px;
+
+  width: 138px;
+  height: 572px;
+
+  background: rgba(0, 0, 0, 0.75);
+
+  border-top: 3px solid;
+  border-bottom: 3px solid;
 }
 
 .material_icon {
@@ -24,9 +42,10 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   width: 75%;
   grid-gap: 32px;
+  margin: 0 auto;
 }
 
 .selected_item {
@@ -34,19 +53,4 @@
   width: 100px;
   object-fit: cover;
   margin: auto;
-}
-
-.Attempts {
-  background-color: $dark-brown;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 130px;
-}
-
-.mat-pic {
-  width: 30px;
-  height: 30px;
 }
