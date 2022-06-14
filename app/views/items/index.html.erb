@@ -1,7 +1,7 @@
 <div class="header">
-  <h1>CHOOSE YOUR ITEMS CURRENT LEVEL</h1>
+  <h1>SPECIFY CURRENT LEVEL OF YOUR ITEMS</h1>
 </div>
-<div class="container">
+<div class="container-index">
   <div class="form">
     <div class="form-conatiner">
       <%= simple_form_for(:item, url: pages_path, method: "get") do |f|%>
@@ -11,7 +11,7 @@
             <%= f.input "#{item.name}", :collection => 0..19, input_html: { min: '0', max: '19' } %>
           </div>
         <% end %>
-        <%= f.submit %>
+        <%= f.submit "Save items", class:"submit" %>
       <% end %>
     </div>
   </div>
