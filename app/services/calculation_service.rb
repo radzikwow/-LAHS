@@ -8,9 +8,9 @@ class CalculationService
   end
 
   def perform!
-  chances = self.chance
-  array = rand(0..100)
-  @success = array <= chances.base
+    chances = self.chance
+    array = rand(0..100)
+    @success = array <= chances.base
   end
 
   private
