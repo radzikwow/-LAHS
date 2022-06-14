@@ -1,9 +1,44 @@
+
+    <!--<% @items.each_with_index do |item, id| %>
+      <div id="<%= id %>" data-gear="<%= item.name %>" data-action="click->active#select" data-active-target="div">
+        <%=image_tag("items/#{item.name}.png", class:"item_pic")%>
+        <p data-gear="<%= item.name %>" data-active-target="selected">+<%= item.current_level.level %></p>
+      </div>
+    <% end %>-->
+
 <div class="item-list">
   <h3 style="text-align: center;">Gear</h3>
-  <div class="items">
-    <% @items.each do |item| %>
-      <%=image_tag("items/#{item.name}.png", class:"item_pic")%>
-      <p>+<%= item.current_level.level %></p>
-    <% end %>
+  <div class="items" >
+
+    <div data-gear="<%= @items[0].name %>" data-action="click->active#select" >
+      <%=image_tag("items/#{@items[0].name}.png", class:"item_pic w-16")%>
+      <p>+<%= @items[0].current_level.level %></p>
+    </div>
+
+    <div data-gear="<%= @items[1].name %>" data-action="click->active#select" >
+      <%=image_tag("items/#{@items[1].name}.png", class:"item_pic")%>
+      <p >+<%= @items[1].current_level.level %></p>
+    </div>
+
+    <div data-gear="<%= @items[2].name %>" data-action="click->active#select" >
+      <%=image_tag("items/#{@items[2].name}.png", class:"item_pic")%>
+      <p >+<%= @items[2].current_level.level %></p>
+    </div>
+
+    <div data-gear="<%= @items[3].name %>" data-action="click->active#select" >
+      <%=image_tag("items/#{@items[3].name}.png", class:"item_pic")%>
+      <p>+<%= @items[3].current_level.level %></p>
+    </div>
+
+    <div data-gear="<%= @items[4].name %>" data-action="click->active#select" >
+      <%=image_tag("items/#{@items[4].name}.png", class:"item_pic")%>
+      <p >+<%= @items[4].current_level.level %></p>
+    </div>
+
+    <div data-gear="<%= @items[5].name %>" data-action="click->active#select" >
+      <%=image_tag("items/#{@items[5].name}.png", class:"item_pic")%>
+      <p>+<%= @items[5].current_level.level %></p>
+    </div>
+
   </div>
 </div>

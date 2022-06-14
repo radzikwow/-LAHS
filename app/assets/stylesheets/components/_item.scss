@@ -1,8 +1,9 @@
-
-
 .items {
   background-image: url("container2.jpg");
   background-size: cover;
   opacity: 0.9;
   box-shadow: 2px 2px 15px gray;
+
+.active-item {
+  border: 8px solid $blue;
 }
