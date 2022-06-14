@@ -1,3 +1,16 @@
 .active-item {
   border: 8px solid $blue;
 }
+
+.honing-item{
+  position: relative;
+  &:after{
+    background-image: url(../../images/DEFINITELY_NOT_STOLEN.png);
+  }
+
+  h2{
+    position: absolute;
+    bottom: 57px;
+    left: 236px;
+  }
+}
