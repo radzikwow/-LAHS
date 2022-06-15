@@ -21,6 +21,7 @@
 }
 .navbar-links {
   display: flex;
+  justify-content: space-around;
 }
 
 .report-a-bug-link {
@@ -29,5 +30,12 @@
 }
 
 .help-link {
-  margin-left: 20px;
+  margin-right: 40px;
+  color: white;
+  text-decoration: none;
+
+  &:hover{
+    font-size: 2rem;
+    color: $bright-yellow;
+  }
 }

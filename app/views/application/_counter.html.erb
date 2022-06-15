@@ -1,17 +1,17 @@
-<div class="col-2">
-  <h3 style="text-align: center;">COUNTER</h3>
-  <div class="attempts">
-    <% @materials.each do |material| %>
-      <div class="counter">
-        <%= image_tag("materials/#{material.name}.png", class:"mat-pic")%>
-        <div class="notification-content">
-          <h5><%=material.amount%></h5>
+<h3 style="text-align: center;">COUNTER</h3>
+  <div class="col-2">
+    <div class="attempts">
+      <% @materials.each do |material| %>
+        <div class="counter">
+         <%= image_tag("materials/#{material.name}.png", class:"mat-pic")%>
+          <div class="notification-content">
+            <h5><%=material.amount%></h5>
+          </div>
         </div>
-      </div>
-    <% end %>
-   </div>
+      <% end %>
+    </div>
 
-    <h4 class="mt-4">ATTEMPTS COUNTER</h4>
+    <h4 style="text-align: center;" class="mt-4">ATTEMPTS</h4>
     <div class="attempts">
       <div class="d-flex justify-content-between w-100">
         <p>CURRENT</p>
