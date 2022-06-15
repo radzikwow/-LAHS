@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import ContextModuleFactory from "webpack/lib/ContextModuleFactory"
 
 export default class extends Controller {
-  static targets = [ "honed", "gear", "level" ]
+  static targets = [ "honed", "gear", "level", "img" ]
 
   select(event){
     // get id of the div
@@ -14,13 +14,18 @@ export default class extends Controller {
       gear.classList.remove("active-item")
     })
 
-    // toggle active class on listed item
+    // add active class on listed item
     selectedItem.classList.add("active-item")
 
     // display selected item on honing position
-    const honingItemImg = this.honedTarget.children[0]
-    const imgTag = `<img class=\"selected_item\" src=\"/assets/items/${selectedItemName}.png\">`
-    honingItemImg.outerHTML = imgTag
+    const honingItemImg = this.imgTarget
+
+    const imgTag = `background-image: url(\"/assets/items/${selectedItemName}.png\"); background-size: cover;
+    background-position: center; background-repeat: no-repeat; height: 100px; width: 100px;`
+    honingItemImg.setAttribute("style", imgTag)
+    // `<img class=\"selected_item\" src=\"/assets/items/${selectedItemName}.png\">`
+    // honingItemImg.outerHTML = imgTag
+
     this.levelTarget.innerHTML = selectedItemLevel
   }
 }
