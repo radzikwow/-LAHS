@@ -50,6 +50,8 @@
   border-image: linear-gradient(90deg, rgba(255,255,255,0) 0%, $bright-yellow 50%, rgba(255,255,255,0) 100%) 1;
   // border-image: linear-gradient(270.28deg, rgba(255, 255, 255, 0) 0.22%, #FFFFFF 49.99%, rgba(0, 0, 0, 0) 99.76%) 1;
 
+  pointer: cursor;
+
   &:hover{
     color: black;
     background-image: radial-gradient(circle at center,$bright-yellow,rgba(255, 255, 255, 0));

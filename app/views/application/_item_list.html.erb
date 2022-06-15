@@ -9,7 +9,7 @@
 
     <div data-gear="<%= @items[1].name %>" data-action="click->active#select click->computations#progressBar" data-active-target="gear" data-level="<%= @items[1].current_level.level %>">
       <%=image_tag("items/#{@items[1].name}.png", class:"item_pic")%>
-      <p >+<%= @items[1].current_level.level %></p>
+      <p>+<%= @items[1].current_level.level %></p>
     </div>
 
     <div data-gear="<%= @items[2].name %>" data-action="click->active#select click->computations#progressBar" data-active-target="gear" data-level="<%= @items[2].current_level.level %>">

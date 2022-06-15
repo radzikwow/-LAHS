@@ -5,6 +5,11 @@ export default class extends Controller {
   static targets = [ "service", "success", "progress", "number", "level"]
 
   progressBar(event){
+    // console.log(event.currentTarget.children[1].innerHTML)
+    this.itemEventTarget = event.currentTarget
+    console.log(this.itemEventTarget.dataset.level)
+    this.currentLevelTarget = event.currentTarget.children[1].innerHTML
+    // console.log(this.currentLevelTarget)
     const level = parseInt(event.currentTarget.dataset.level, 10)
     const baseChance = this.#chance(level)
     this.progressTarget.style = `width:${baseChance}%`
@@ -14,29 +19,37 @@ export default class extends Controller {
 
   hone(event){
     this.successTarget.innerHTML = ""
-    const level = this.serviceTarget.dataset.currentLevel
-    const levelInt = parseInt(level,10)
-    const baseChance = this.#chance(levelInt)
-    // console.log(baseChance)
-    // console.log(this.serviceTarget.dataset.chances)
-    // Returns a random number between 100 and 0
+    // const level = this.serviceTarget.dataset.currentLevel
+    // const levelInt = parseInt(level, 10)
+    const baseChance = this.#chance(parseInt(this.currentLevelTarget))
+
+    // Returns a random number [0, 100]
     const diceRoll = Math.round(Math.random() * 101)
-    // console.log(diceRoll)
+
     // call chance method to che chance
     const success = diceRoll <= baseChance ? "Success" : "Fail"
     this.successTarget.insertAdjacentHTML("beforeend", success)
 
-    if (success === "Success") {
-      console.log(success)
-      // data target + 1
-      this.levelTarget.innerHTML = levelInt + 1
+    if (success === "Success" && parseInt(this.currentLevelTarget) < 20) {
 
-      const baseChance = this.#chance(level + 1)
+      this.currentLevelTarget = `${parseInt(this.currentLevelTarget) + 1}`
+
+      // increase level the active item
+      this.levelTarget.innerHTML = `+${parseInt(this.currentLevelTarget)}`
+
+      // increase level of the item in item list
+      console.log(this.itemEventTarget.dataset.level)
+      this.itemEventTarget.setAttribute("data-level", this.currentLevelTarget)
+      console.log(this.itemEventTarget)
+      this.itemEventTarget.children[1].innerHTML = `+${parseInt(this.currentLevelTarget)}`
+
+
+      const baseChance = this.#chance(parseInt(this.currentLevelTarget) + 1)
       this.progressTarget.style = `width:${baseChance}%`
       this.progressTarget.ariaValueNow = `${baseChance}`
       this.progressTarget.children[0].innerHTML = `${baseChance}%`
     }
-    // console.log(success)
+
   }
 
   #chance(level){
@@ -63,6 +76,7 @@ export default class extends Controller {
       return 5
     }
   }
+
 }
 
 
