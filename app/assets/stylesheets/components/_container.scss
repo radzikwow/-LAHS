@@ -11,8 +11,17 @@
   justify-content: center;
 }
 
-.wrap-middle{
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(+100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 
+.wrap-middle{
+  animation: 1.5s ease-out 0s 1 slideInFromBottom;
   width: 535px;
   height: 800px;
   justify-content: center;

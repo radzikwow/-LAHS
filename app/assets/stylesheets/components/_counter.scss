@@ -1,5 +1,14 @@
-.attempts {
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(+100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 
+.attempts {
+  animation: 1.5s ease-out 0s 1 slideInFromRight;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

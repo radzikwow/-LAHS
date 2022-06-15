@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import ContextModuleFactory from "webpack/lib/ContextModuleFactory"
 
 export default class extends Controller {
-  static targets = [ "honed", "gear", "level", "img" ]
+  static targets = [ "honed", "gear", "level", "img", "progressbar" ]
 
   select(event){
     // get id of the div
@@ -27,5 +27,7 @@ export default class extends Controller {
     // honingItemImg.outerHTML = imgTag
 
     this.levelTarget.innerHTML = selectedItemLevel
+
+    this.progressbarTarget.classList.remove("d-none")
   }
 }
