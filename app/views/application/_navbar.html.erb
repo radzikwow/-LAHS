@@ -1,4 +1,14 @@
 <div class="navbar">
-  <h1>Lost Ark Honing Symulator</h1>
-  <%= link_to("Set items", root_path) %>
+  <div class="logo">
+    <%= image_tag("LA_LOGO.png", class:"navbar-img") %>
+    <h1>HONING SYMULATOR</h1>
+  </div>
+  <div class="navbar-links">
+    <div class="help-link">
+      <h4><%= link_to("Set items", root_path) %></h4>
+    </div>
+    <div class="report-a-bug-link">
+      <h4>REPORT A BUG</h4>
+    </div>
+  </div>
 </div>

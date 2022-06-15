@@ -1,9 +1,33 @@
 .navbar {
-  padding: 22px;
+  display: flex;
+  justify-content: space-between;
   text-align: start;
-  background-image: url("navbar cropped.png");
-  background-size: cover;
-  background-position-y: center;
-  color: $light-brown;
+  color: whitesmoke;
+  text-shadow: 2px 2px 10px rgb(255, 255, 255);
   font-size: 30px;
+  background-color: rgba(0,0,0,0.45);
+  height: 100px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  font-family: $headers-font;
+
+}
+.navbar-img {
+  margin-left: 40px;
+  margin-right: 10px;
+  height: 80px
+}
+.navbar-links {
+  display: flex;
+}
+
+.report-a-bug-link {
+  margin-left: 20px;
+  margin-right: 40px;
+}
+
+.help-link {
+  margin-left: 20px;
 }
