@@ -10,10 +10,7 @@ export default class extends Controller {
     this.progressTarget.style = `width:${baseChance}%`
     this.progressTarget.ariaValueNow = `${baseChance}`
     this.progressTarget.children[0].innerHTML = `${baseChance}%`
-    console.log(level)
-    console.log(baseChance)
   }
-
 
   hone(event){
     this.successTarget.innerHTML = ""
