@@ -5,13 +5,15 @@ export default class extends Controller {
   static targets = [ "service", "success", "progress", "number"]
 
   progressBar(event){
-    console.log(event)
-    const level = this.serviceTarget.dataset.currentLevel
+    const level = parseInt(event.currentTarget.dataset.level, 10)
     const baseChance = this.#chance(level)
     this.progressTarget.style = `width:${baseChance}%`
     this.progressTarget.ariaValueNow = `${baseChance}`
     this.progressTarget.children[0].innerHTML = `${baseChance}%`
+    console.log(level)
+    console.log(baseChance)
   }
+
 
   hone(event){
     this.successTarget.innerHTML = ""
