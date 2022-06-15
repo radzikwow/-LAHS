@@ -11,9 +11,14 @@
   justify-content: center;
 }
 
-.Attempts {
-  background-image: url("container2.jpg");
-  background-size: cover;
-  opacity: 0.9;
-  box-shadow: 2px 2px 15px gray;
+.wrap-middle{
+
+  width: 470px;
+  height: 830px;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.75);
+
+  border-top: 3px solid;
+  border-bottom: 3px solid;
 }

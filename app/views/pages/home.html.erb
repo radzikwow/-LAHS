@@ -2,9 +2,6 @@
 
   <!-- DIV FOR ITEM LIST (LEFT) -->
   <div class="container-left">
-    <div class="submit">
-    <%= link_to("Set items", root_path) %>
-    </div>
     <%= render "item_list" %>
   </div>
 
@@ -12,10 +9,12 @@
   <div class="container-middle">
     <%= render "active_item" %>
     <h1 data-computations-target="success"></h1>
-    <%= render "progress_bars" %>
-    <%= render "optional_mats" %>
-    <%= render "cards" %>
-    <%= render "hone" %>
+    <div class="wrap-middle">
+      <%= render "progress_bars"%>
+      <%= render "optional_mats" %>
+      <%= render "cards" %>
+      <%= render "hone" %>
+    </div>
   </div>
   <!-- DIV FOR COUNTERS (RIGHT) -->
   <div class="container-right">

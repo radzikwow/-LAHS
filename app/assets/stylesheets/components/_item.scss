@@ -1,9 +1,16 @@
-.items {
-  background-image: url("container2.jpg");
-  background-size: cover;
-  opacity: 0.9;
-  box-shadow: 2px 2px 15px gray;
-}
 .active-item {
   border: 8px solid $blue;
+}
+
+.honing-item{
+  position: relative;
+  &:after{
+    background-image: url(../../images/DEFINITELY_NOT_STOLEN.png);
+  }
+
+  h2{
+    position: absolute;
+    bottom: 57px;
+    left: 236px;
+  }
 }

@@ -1,6 +1,6 @@
 <div class="col-2">
   <h3 style="text-align: center;">COUNTER</h3>
-  <div class="Attempts">
+  <div class="attempts">
     <% @materials.each do |material| %>
       <div class="counter">
         <%= image_tag("materials/#{material.name}.png", class:"mat-pic")%>
@@ -11,8 +11,8 @@
     <% end %>
    </div>
 
-    <h4 class="mt-4">ATTEMPT COUNTER</h4>
-    <div class="Attempts">
+    <h4 class="mt-4">ATTEMPTS COUNTER</h4>
+    <div class="attempts">
       <div class="d-flex justify-content-between w-100">
         <p>CURRENT</p>
         <p><small>9</small></p>
