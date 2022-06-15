@@ -5,6 +5,9 @@ export default class extends Controller {
   static targets = [ "service", "success", "progress", "number", "level"]
 
   progressBar(event){
+    // console.log(event.currentTarget.children[1].innerHTML)
+    this.currentLevelTarget = event.currentTarget.children[1].innerHTML
+    // console.log(this.currentLevelTarget)
     const level = parseInt(event.currentTarget.dataset.level, 10)
     const baseChance = this.#chance(level)
     this.progressTarget.style = `width:${baseChance}%`
@@ -15,7 +18,7 @@ export default class extends Controller {
   hone(event){
     this.successTarget.innerHTML = ""
     const level = this.serviceTarget.dataset.currentLevel
-    const levelInt = parseInt(level,10)
+    const levelInt = parseInt(level, 10)
     const baseChance = this.#chance(levelInt)
     // console.log(baseChance)
     // console.log(this.serviceTarget.dataset.chances)
@@ -26,12 +29,15 @@ export default class extends Controller {
     const success = diceRoll <= baseChance ? "Success" : "Fail"
     this.successTarget.insertAdjacentHTML("beforeend", success)
 
-    if (success === "Success") {
+    if (success === "Success" && level < 20) {
       console.log(success)
+      console.log(this.currentLevelTarget)
       // data target + 1
-      this.levelTarget.innerHTML = levelInt + 1
+      this.currentLevelTarget = `+${parseInt(this.currentLevelTarget) + 1}`
+      console.log(this.currentLevelTarget)
 
-      const baseChance = this.#chance(level + 1)
+
+      const baseChance = this.#chance(parseInt(this.currentLevelTarget) + 1)
       this.progressTarget.style = `width:${baseChance}%`
       this.progressTarget.ariaValueNow = `${baseChance}`
       this.progressTarget.children[0].innerHTML = `${baseChance}%`
