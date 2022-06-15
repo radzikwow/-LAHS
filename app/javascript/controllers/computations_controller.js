@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import ContextModuleFactory from "webpack/lib/ContextModuleFactory"
 
 export default class extends Controller {
-  static targets = [ "service", "success", "progress", "number"]
+  static targets = [ "service", "success", "progress", "number", "level"]
 
   progressBar(event){
     const level = parseInt(event.currentTarget.dataset.level, 10)
@@ -15,7 +15,8 @@ export default class extends Controller {
   hone(event){
     this.successTarget.innerHTML = ""
     const level = this.serviceTarget.dataset.currentLevel
-    const baseChance = this.#chance(level)
+    const levelInt = parseInt(level,10)
+    const baseChance = this.#chance(levelInt)
     // console.log(baseChance)
     // console.log(this.serviceTarget.dataset.chances)
     // Returns a random number between 100 and 0
@@ -23,8 +24,19 @@ export default class extends Controller {
     // console.log(diceRoll)
     // call chance method to che chance
     const success = diceRoll <= baseChance ? "Success" : "Fail"
-    // console.log(success)
     this.successTarget.insertAdjacentHTML("beforeend", success)
+
+    if (success === "Success") {
+      console.log(success)
+      // data target + 1
+      this.levelTarget.innerHTML = levelInt + 1
+
+      const baseChance = this.#chance(level + 1)
+      this.progressTarget.style = `width:${baseChance}%`
+      this.progressTarget.ariaValueNow = `${baseChance}`
+      this.progressTarget.children[0].innerHTML = `${baseChance}%`
+    }
+    // console.log(success)
   }
 
   #chance(level){
