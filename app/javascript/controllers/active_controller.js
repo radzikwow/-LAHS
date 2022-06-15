@@ -2,12 +2,13 @@ import { Controller } from "stimulus"
 import ContextModuleFactory from "webpack/lib/ContextModuleFactory"
 
 export default class extends Controller {
-  static targets = [ "honed", "gear" ]
+  static targets = [ "honed", "gear", "level" ]
 
   select(event){
     // get id of the div
     const selectedItemName = event.currentTarget.dataset.gear
     const selectedItem = event.currentTarget
+    const selectedItemLevel = selectedItem.children[1].innerHTML
 
     this.gearTargets.forEach(gear=>{
       gear.classList.remove("active-item")
@@ -20,5 +21,6 @@ export default class extends Controller {
     const honingItemImg = this.honedTarget.children[0]
     const imgTag = `<img class=\"selected_item\" src=\"/assets/items/${selectedItemName}.png\">`
     honingItemImg.outerHTML = imgTag
+    this.levelTarget.innerHTML = selectedItemLevel
   }
 }

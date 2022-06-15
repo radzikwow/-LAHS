@@ -2,7 +2,16 @@ import { Controller } from "stimulus"
 import ContextModuleFactory from "webpack/lib/ContextModuleFactory"
 
 export default class extends Controller {
-  static targets = [ "service", "success" ]
+  static targets = [ "service", "success", "progress", "number"]
+
+  progressBar(event){
+    console.log(event)
+    const level = this.serviceTarget.dataset.currentLevel
+    const baseChance = this.#chance(level)
+    this.progressTarget.style = `width:${baseChance}%`
+    this.progressTarget.ariaValueNow = `${baseChance}`
+    this.progressTarget.children[0].innerHTML = `${baseChance}%`
+  }
 
   hone(event){
     this.successTarget.innerHTML = ""
@@ -42,23 +51,9 @@ export default class extends Controller {
     else {
       return 5
     }
-
-    // switch(level){
-    //   case (level >= 0 && level <= 6):
-    //     return 100;
-    //   case 7:
-    //     return 60;
-    //   case 8:
-    //     return 45;
-    //   case (level >= 9 && level <= 11):
-    //     return 30;
-    //   case (level >= 12 && level <= 14):
-    //     return 15;
-    //   case (level >= 15 && level <= 17):
-    //     return 10;
-    //   case (level >= 18 && level <= 19):
-    //     return 5;
-    // }
-
   }
 }
+
+
+
+// STORE STATE LALALASKKAVJWIADW INCRIMENT AJSDBNAJDBNAJWDBAJW YES LOCAL STORAGE VALUE INSIDE THE KEY INCREMENT INSIDE THE KEY CALL STORAGE RETRIEVE FROM NOT A STORAGE - QUICK AND EASY

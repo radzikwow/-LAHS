@@ -27,3 +27,19 @@ class PagesController < ApplicationController
     @total_attempt_counter = Attempt.all.count - 1
   end
 end
+
+
+
+
+
+# if perform success ? current_level = current_level + 1
+
+
+
+# OPTIONALS !!!
+# MAKE AN ACTUAL CHANCE VARIABLE WHICH WILL BE THE SUMMARY
+# OF ALL VARIABLES INFLUENCING THE END CHANCE OF HONING
+# MAKE PROGRESS BAR DISPLAY THE ACTUAL CHANCE RATHER THEN BASE
+# JAVASCRIPT SOMETHING SOMETHING?
+# FEND OFF SUICIDAL THOUGHTS BEFORE FRIDAY
+#
