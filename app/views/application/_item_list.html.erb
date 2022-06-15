@@ -11,7 +11,7 @@
   <h3 style="text-align: center;">GEAR</h3>
   <div class="items" >
 
-    <div data-gear="<%= @items[0].name %>" data-action="click->active#select click->computations#progressBar" data-active-target="gear">
+    <div data-gear="<%= @items[0].name %>" data-action="click->active#select click->computations#progressBar" data-active-target="gear" data-level>
       <%=image_tag("items/#{@items[0].name}.png", class:"item_pic w-16")%>
       <p class="text-center">+<%= @items[0].current_level.level %></p>
     </div>
