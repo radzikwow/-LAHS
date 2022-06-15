@@ -11,6 +11,9 @@ class CalculationService
     chances = self.chance
     array = rand(0..100)
     @success = array <= chances.base
+    if @success == true
+      @item.current_level = CurrentLevel.find_by(id: @item.current_level.id + 1)
+    end
   end
 
   private
