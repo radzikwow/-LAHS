@@ -28,7 +28,7 @@ export default class extends Controller {
     // `<img class=\"selected_item\" src=\"/assets/items/${selectedItemName}.png\">`
     // honingItemImg.outerHTML = imgTag
 
-    this.levelTarget.innerHTML = selectedItemLevel
+    this.levelTarget.innerHTML = `+${selectedItemLevel}`
 
     this.progressbarTarget.classList.remove("d-none")
 
