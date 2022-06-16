@@ -5,7 +5,6 @@ export default class extends Controller {
 
   static targets = [ "service", "success", "progress", "level", "materials", "cards", "win", "fail"]
 
-
   connect(){
     this.sum = 0
     this.items = [0,0,0,0,0,0]
@@ -55,20 +54,14 @@ export default class extends Controller {
     console.log(this.sum)
 
     const baseChance = parseInt(this.#chance(this.level))
+    this.chanceWithOptionals = baseChance + this.sum
 
     if(baseChance != 100){
       this.progressTarget.style = `width:${baseChance + this.sum}%`
       this.progressTarget.ariaValueNow = `${baseChance + this.sum}`
       this.progressTarget.children[0].innerHTML = `${baseChance + this.sum}%`
     }
-    // this.additivePercentage = Number(parseFloat(event.currentTarget.dataset.additivePercentage).toFixed(2))
-    // const baseChance = this.#chance(this.level)
-    // this.sum += Number(baseChance) + Number(this.additivePercentage)
 
-    // console.log(typeof this.sum )
-    // this.progressTarget.style = `width:${this.sum}%`
-    // this.progressTarget.ariaValueNow = `${this.sum}`
-    // this.progressTarget.children[0].innerHTML = `${this.sum}%`
   }
 
   hone(event){
@@ -81,7 +74,7 @@ export default class extends Controller {
     const diceRoll = Math.round(Math.random() * 101)
 
     // call chance method to che chance
-    const success = diceRoll <= baseChance ? "Success" : "Fail"
+    const success = diceRoll <= this.chanceWithOptionals ? "Success" : "Fail"
     this.successTarget.insertAdjacentHTML("beforeend", success)
 
     if (success === "Success") {
