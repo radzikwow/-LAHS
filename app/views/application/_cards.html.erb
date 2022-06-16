@@ -7,30 +7,6 @@
 <%# choose which material to display %>
 
 <div class="cards" style="margin: 0 42px;">
-  <div class="grid mt-5" data-active-target="cards">
-    <div class="text-center">
-      <%= image_tag("materials/shards.png", class:"mat-pic") %>
-      <p> <%= @materials["helmet"][0].amount %> </p>
-    </div>
-    <div class="text-center">
-      <%= image_tag("materials/gold.png", class:"mat-pic") %>
-      <p> <%= @materials["helmet"][1].amount %> </p>
-    </div>
-    <div class="text-center">
-      <%= image_tag("materials/silver.png", class:"mat-pic") %>
-      <p> <%= @materials["helmet"][2].amount %> </p>
-    </div>
-    <div class="text-center">
-     <%= image_tag("materials/leapstone.png", class:"mat-pic") %>
-      <p> <%= @materials["helmet"][3].amount %> </p>
-    </div>
-    <div class="text-center">
-      <%= image_tag("materials/oreha.png", class:"mat-pic") %>
-      <p> <%= @materials["helmet"][4].amount %> </p>
-    </div>
-    <div class="text-center">
-      <%= image_tag("materials/guardian.png", class:"mat-pic") %>
-      <p> <%= @materials["helmet"][5].amount %> </p>
-    </div>
+  <div class="grid mt-5" data-active-target="cards" data-computations-target="cards">
   </div>
 </div>
