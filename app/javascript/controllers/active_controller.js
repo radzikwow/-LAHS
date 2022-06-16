@@ -22,7 +22,7 @@ export default class extends Controller {
     const activeImage = event.currentTarget.children[0].src
 
     const imgTag = `background-image: url("${activeImage}"); background-size: cover;
-    background-position: center; background-repeat: no-repeat; height: 150px; width: 150px; border-radius: 100%; border: 1px solid #dee2e6;`
+    background-position: center; background-repeat: no-repeat; height: 150px; width: 150px; border-radius: 100%; border: 1px solid #dee2e6; margin-bottom: 12px;`
     honingItemImg.setAttribute("style", imgTag)
     // `<img class=\"selected_item\" src=\"/assets/items/${selectedItemName}.png\">`
     // honingItemImg.outerHTML = imgTag
