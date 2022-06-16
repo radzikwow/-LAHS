@@ -69,7 +69,7 @@ export default class extends Controller {
       return 5
     }
   }
-
+  
   #upgradeOnSuccess(){
     this.currentLevelTarget = `${parseInt(this.currentLevelTarget) + 1}`
 
