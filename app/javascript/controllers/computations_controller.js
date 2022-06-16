@@ -38,20 +38,18 @@ export default class extends Controller {
 
     if (success === "Success") {
      const rollTarget = this.winTarget
-     console.log(this.winTarget)
      this.winTarget.classList.remove("ghost")
      console.log(this.winTarget)
-    //  setTimeout(()=>rollTarget.classList.add("ghost"), 2000)
-     // sleep 0.5sec
+     // sleep 2sec
      // add d-none again
+     setTimeout(()=>rollTarget.classList.add("ghost"), 2000)
     } else {
       const failRollTarget = this.failTarget
       failRollTarget.classList.remove("ghost")
       console.log(failRollTarget)
-      setTimeout(()=>failRollTarget.classList.add("ghost"), 3000)
       // remove the  d-none class
       // sleep 0.5sec
-      // add d-none again
+      setTimeout(()=>failRollTarget.classList.add("ghost"), 3000)
     }
 
 
