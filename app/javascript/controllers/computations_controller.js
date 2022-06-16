@@ -2,15 +2,14 @@ import { Controller } from "stimulus"
 import ContextModuleFactory from "webpack/lib/ContextModuleFactory"
 
 export default class extends Controller {
-  static targets = [ "service", "success", "progress", "number", "level"]
+  static targets = [ "service", "success", "progress", "level", "materials"]
 
   progressBar(event){
-    // console.log(event.currentTarget.children[1].innerHTML)
+
     this.itemEventTarget = event.currentTarget
-    console.log(this.itemEventTarget.dataset.level)
     this.currentLevelTarget = event.currentTarget.children[1].innerHTML
-    // console.log(this.currentLevelTarget)
     const level = parseInt(event.currentTarget.dataset.level, 10)
+
     const baseChance = this.#chance(level)
     this.progressTarget.style = `width:${baseChance}%`
     this.progressTarget.ariaValueNow = `${baseChance}`
@@ -31,23 +30,7 @@ export default class extends Controller {
     this.successTarget.insertAdjacentHTML("beforeend", success)
 
     if (success === "Success" && parseInt(this.currentLevelTarget) < 20) {
-
-      this.currentLevelTarget = `${parseInt(this.currentLevelTarget) + 1}`
-
-      // increase level the active item
-      this.levelTarget.innerHTML = `+${parseInt(this.currentLevelTarget)}`
-
-      // increase level of the item in item list
-      console.log(this.itemEventTarget.dataset.level)
-      this.itemEventTarget.setAttribute("data-level", this.currentLevelTarget)
-      console.log(this.itemEventTarget)
-      this.itemEventTarget.children[1].innerHTML = `+${parseInt(this.currentLevelTarget)}`
-
-
-      const baseChance = this.#chance(parseInt(this.currentLevelTarget) + 1)
-      this.progressTarget.style = `width:${baseChance}%`
-      this.progressTarget.ariaValueNow = `${baseChance}`
-      this.progressTarget.children[0].innerHTML = `${baseChance}%`
+      this.#upgradeOnSuccess()
     }
 
   }
@@ -77,8 +60,44 @@ export default class extends Controller {
     }
   }
 
-}
+  #upgradeOnSuccess(){
+    this.currentLevelTarget = `${parseInt(this.currentLevelTarget) + 1}`
 
+    // increase level the active item
+    this.levelTarget.innerHTML = `+${parseInt(this.currentLevelTarget)}`
 
+    // increase level of the item in item list
 
-// STORE STATE LALALASKKAVJWIADW INCRIMENT AJSDBNAJDBNAJWDBAJW YES LOCAL STORAGE VALUE INSIDE THE KEY INCREMENT INSIDE THE KEY CALL STORAGE RETRIEVE FROM NOT A STORAGE - QUICK AND EASY
+    this.itemEventTarget.setAttribute("data-level", this.currentLevelTarget)
+    this.itemEventTarget.children[1].innerHTML = `+${parseInt(this.currentLevelTarget)}`
+
+    // update progress bar
+    const baseChance = this.#chance(parseInt(this.currentLevelTarget) + 1)
+    this.progressTarget.style = `width:${baseChance}%`
+    this.progressTarget.ariaValueNow = `${baseChance}`
+    this.progressTarget.children[0].innerHTML = `${baseChance}%`
+
+    // update counter
+    this.#updateMaterialsCounter()
+  }
+
+    #updateMaterialsCounter(){
+      // this.materialsTarget is the attempts div which encloses all of the materials
+
+      [0,1,2,3,4,5].forEach((index) => {
+      console.log(this.materialsTarget.children[index])
+      const currentAmount = parseInt(this.materialsTarget.children[index].dataset.amount)
+      const currentGear = this.materialsTarget.children[index].dataset.name
+
+      const imgTag = `<img class="mat-pic" src="/assets/materials/${currentGear}.png">`
+      const divTag = `<div class="notification-content" data-action="click->computations#hone">
+      <h5>${currentAmount + 10}</h5></div>`
+
+      this.materialsTarget.children[index].setAttribute("data-amount", currentAmount + 10)
+      this.materialsTarget.children[index].innerHTML = `${imgTag}${divTag}`
+
+    })
+
+    }
+
+  }
