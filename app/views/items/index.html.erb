@@ -1,18 +1,24 @@
-<div class="header">
-  <h1>SPECIFY CURRENT LEVEL OF YOUR ITEMS</h1>
-</div>
-<div class="container-index">
-  <div class="form">
-    <div class="form-conatiner">
-      <%= simple_form_for(:item, url: pages_path, method: "get") do |f|%>
-        <% @items.each do |item| %>
-          <div class="item-container">
-            <%= image_tag "items/#{item.name}.png" %>
-            <%= f.input "#{item.name}", :collection => 0..19, input_html: { min: '0', max: '19' } %>
-          </div>
-        <% end %>
-        <%= f.submit "Save items", class:"submit" %>
-      <% end %>
+<div class="index-body">
+  <div class="container-index-main">
+    <div class="header">
+      <h1 class="index-h1">HONE YOUR ITEMS</h1>
+    </div>
+    <div class="container-index">
+      <div class="form">
+        <div class="form-conatiner" style="text-align: -webkit-center">
+          <div class="form-items">
+            <%= simple_form_for(:item, url: pages_path, method: "get") do |f|%>
+              <% @items.each do |item| %>
+                <div class="item-container">
+                  <%= image_tag("items/#{item.name}.png", class:"item-img") %>
+                  <%= f.input "#{item.name}", :collection => 0..19, input_html: { min: '0', max: '19' } %>
+                </div>
+              <% end %>
+            </div>
+            <%= f.submit "Save items", class:"button-items" %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
