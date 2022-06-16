@@ -1,11 +1,12 @@
 <h3 style="text-align: center;">COUNTER</h3>
   <div class="col-2">
-    <div class="attempts">
+    <div class="attempts" data-computations-target="materials">
+      <% @materials = @materials["helmet"] %>
       <% @materials.each do |material| %>
-        <div class="counter">
+        <div class="counter" data-amount="<%=material.amount%>" data-name="<%=material.name%>">
          <%= image_tag("materials/#{material.name}.png", class:"mat-pic")%>
-          <div class="notification-content">
-            <h5><%=material.amount%></h5>
+          <div class="notification-content" data-action="click->computations#hone" >
+            <h5>0</h5>
           </div>
         </div>
       <% end %>

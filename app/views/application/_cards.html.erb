@@ -4,31 +4,9 @@
     <% end %>
   </div>-->
 
+<%# choose which material to display %>
+
 <div class="cards" style="margin: 0 42px;">
-  <div class="grid mt-5">
-    <div class="text-center">
-      <%= image_tag("materials/shards.png", class:"mat-pic") %>
-      <p>10</p>
-    </div>
-    <div class="text-center">
-      <%= image_tag("materials/gold.png", class:"mat-pic") %>
-      <p>10</p>
-    </div>
-    <div class="text-center">
-      <%= image_tag("materials/silver.png", class:"mat-pic") %>
-      <p>10</p>
-    </div>
-    <div class="text-center">
-      <%= image_tag("materials/leapstone.png", class:"mat-pic") %>
-      <p>10</p>
-    </div>
-    <div class="text-center">
-      <%= image_tag("materials/oreha.png", class:"mat-pic") %>
-      <p>10</p>
-    </div>
-    <div class="text-center">
-      <%= image_tag("materials/destruction.png", class:"mat-pic") %>
-      <p>10</p>
-    </div>
+  <div class="grid mt-5" data-active-target="cards" data-computations-target="cards">
   </div>
 </div>

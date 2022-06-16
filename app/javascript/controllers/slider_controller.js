@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = [ "number" ]
 
   update(event){
-    console.log("i connected")
+    // console.log("i connected")
     const sliderId = event.currentTarget.id
     const sliderValue = event.currentTarget.value
     this.numberTargets.forEach(number => {

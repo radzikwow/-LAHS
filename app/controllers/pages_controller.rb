@@ -4,6 +4,8 @@ class PagesController < ApplicationController
 
     @current_levels = []
     @items = []
+    # materials hash of arrays: each entry is an array of materials for a specific item
+    @materials = {}
 
     @optionals = ["solar grace", "solar blessing", "solar protection"]
 
@@ -18,8 +20,10 @@ class PagesController < ApplicationController
       @current_levels << @current_level
     end
 
-    # hardcoding materials for honing. Item = "helmet"
-    @materials = @items[1].materials.where(current_level: @items[1].current_level.level)
+    @items.each do |item|
+      @materials[item.name] = item.materials.where(current_level: item.current_level.level)
+    end
+
     @service = CalculationService.new(@items[1].current_level, @items[1])
     @success = @service.perform!
     Attempt.create!
