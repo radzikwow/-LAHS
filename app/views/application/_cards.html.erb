@@ -4,31 +4,33 @@
     <% end %>
   </div>-->
 
+<%# choose which material to display %>
+
 <div class="cards" style="margin: 0 42px;">
-  <div class="grid mt-5">
+  <div class="grid mt-5" data-active-target="cards">
     <div class="text-center">
-      <%= image_tag("materials/#{@materials[0].name}.png", class:"mat-pic") %>
-      <p> <%= @materials[0].amount %> </p>
+      <%= image_tag("materials/shards.png", class:"mat-pic") %>
+      <p> <%= @materials["helmet"][0].amount %> </p>
     </div>
     <div class="text-center">
-      <%= image_tag("materials/#{@materials[1].name}.png", class:"mat-pic") %>
-      <p> <%= @materials[1].amount %> </p>
+      <%= image_tag("materials/gold.png", class:"mat-pic") %>
+      <p> <%= @materials["helmet"][1].amount %> </p>
     </div>
     <div class="text-center">
-      <%= image_tag("materials/#{@materials[2].name}.png", class:"mat-pic") %>
-      <p> <%= @materials[2].amount %> </p>
+      <%= image_tag("materials/silver.png", class:"mat-pic") %>
+      <p> <%= @materials["helmet"][2].amount %> </p>
     </div>
     <div class="text-center">
-     <%= image_tag("materials/#{@materials[3].name}.png", class:"mat-pic") %>
-      <p> <%= @materials[3].amount %> </p>
+     <%= image_tag("materials/leapstone.png", class:"mat-pic") %>
+      <p> <%= @materials["helmet"][3].amount %> </p>
     </div>
     <div class="text-center">
-      <%= image_tag("materials/#{@materials[4].name}.png", class:"mat-pic") %>
-      <p> <%= @materials[4].amount %> </p>
+      <%= image_tag("materials/oreha.png", class:"mat-pic") %>
+      <p> <%= @materials["helmet"][4].amount %> </p>
     </div>
     <div class="text-center">
-      <%= image_tag("materials/#{@materials[5].name}.png", class:"mat-pic") %>
-      <p> <%= @materials[5].amount %> </p>
+      <%= image_tag("materials/guardian.png", class:"mat-pic") %>
+      <p> <%= @materials["helmet"][5].amount %> </p>
     </div>
   </div>
 </div>

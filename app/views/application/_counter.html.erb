@@ -1,6 +1,7 @@
 <h3 style="text-align: center;">COUNTER</h3>
   <div class="col-2">
     <div class="attempts" data-computations-target="materials">
+      <% @materials = @materials["helmet"] %>
       <% @materials.each do |material| %>
         <div class="counter" data-amount="<%=material.amount%>" data-name="<%=material.name%>">
          <%= image_tag("materials/#{material.name}.png", class:"mat-pic")%>

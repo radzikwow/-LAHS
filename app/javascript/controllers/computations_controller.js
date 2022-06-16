@@ -85,7 +85,7 @@ export default class extends Controller {
       // this.materialsTarget is the attempts div which encloses all of the materials
 
       [0,1,2,3,4,5].forEach((index) => {
-      console.log(this.materialsTarget.children[index])
+
       const currentAmount = parseInt(this.materialsTarget.children[index].dataset.amount)
       const currentGear = this.materialsTarget.children[index].dataset.name
 
