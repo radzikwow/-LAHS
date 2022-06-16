@@ -74,7 +74,7 @@ export default class extends Controller {
     const diceRoll = Math.round(Math.random() * 101)
 
     // call chance method to che chance
-    const success = diceRoll <= this.chanceWithOptionals ? "Success" : "Fail"
+    const success = diceRoll <= this.chanceWithOptionals ? "SUCCESS" : "FAIL"
     this.successTarget.insertAdjacentHTML("beforeend", success)
 
     if (success === "Success") {
@@ -165,7 +165,7 @@ export default class extends Controller {
 
         const currentGear = this.materialsTarget.children[index].dataset.name
 
-        const imgTag = `<img class="mat-pic" src="/assets/materials/${currentGear}.png">`
+        const imgTag = `<img class="mat-pic" style="margin-right: 8px;" src="/assets/materials/${currentGear}.png">`
         const divTag = `<div class="notification-content" data-action="click->computations#hone">
         <h5>${this.items[index]}</h5></div>`
 

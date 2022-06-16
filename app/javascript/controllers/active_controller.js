@@ -20,10 +20,9 @@ export default class extends Controller {
     // display selected item on honing position
     const honingItemImg = this.imgTarget
     const activeImage = event.currentTarget.children[0].src
-    console.log(event.currentTarget.children[0].src)
 
     const imgTag = `background-image: url("${activeImage}"); background-size: cover;
-    background-position: center; background-repeat: no-repeat; height: 100px; width: 100px;`
+    background-position: center; background-repeat: no-repeat; height: 150px; width: 150px; border-radius: 100%; border: 1px solid #dee2e6;`
     honingItemImg.setAttribute("style", imgTag)
     // `<img class=\"selected_item\" src=\"/assets/items/${selectedItemName}.png\">`
     // honingItemImg.outerHTML = imgTag
@@ -46,7 +45,7 @@ export default class extends Controller {
     materials.forEach((material) => {
 
       const innerHTMLTag = `<div class="text-center">
-      <img class="mat-pic" src="/assets/materials/${material}.png">
+      <img class="mat-pic style="margin-right: 8px;" src="/assets/materials/${material}.png">
       <p class="p-tag"> ${materialsAmounts[material]} </p>
       </div>`
 
