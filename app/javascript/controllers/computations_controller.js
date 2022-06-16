@@ -101,9 +101,6 @@ export default class extends Controller {
         // materialsAmount.push(parseInt(element.innerText))
       })
 
-      console.log(this.items)
-      console.log(this.materialsTarget)
-
       const number = [0,1,2,3,4,5]
 
       number.forEach((index) => {
