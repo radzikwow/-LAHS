@@ -7,6 +7,7 @@ export default class extends Controller {
 
   connect(){
     this.sum = 0
+    this.chanceWithOptionals = 100
     this.items = [0,0,0,0,0,0]
   }
 
@@ -54,14 +55,13 @@ export default class extends Controller {
     console.log(this.sum)
 
     const baseChance = parseInt(this.#chance(this.level))
-    this.chanceWithOptionals = baseChance + this.sum
 
     if(baseChance != 100){
+      this.chanceWithOptionals = Number(baseChance) + Number(this.sum)
       this.progressTarget.style = `width:${baseChance + this.sum}%`
       this.progressTarget.ariaValueNow = `${baseChance + this.sum}`
       this.progressTarget.children[0].innerHTML = `${baseChance + this.sum}%`
     }
-
   }
 
   hone(event){
@@ -69,15 +69,19 @@ export default class extends Controller {
     // const level = this.serviceTarget.dataset.currentLevel
     // const levelInt = parseInt(level, 10)
     const baseChance = this.#chance(parseInt(this.currentLevelTarget))
-
+    console.log(this.currentLevelTarget)
+    console.log("yo")
+    console.log(baseChance)
     // Returns a random number [0, 100]
     const diceRoll = Math.round(Math.random() * 101)
-
+    console.log(diceRoll)
+    console.log(this.sum)
+    console.log(this.chanceWithOptionals)
     // call chance method to che chance
     const success = diceRoll <= this.chanceWithOptionals ? "SUCCESS" : "FAIL"
     this.successTarget.insertAdjacentHTML("beforeend", success)
 
-    if (success === "Success") {
+    if (success === "SUCCESS") {
      const rollTarget = this.winTarget
      this.winTarget.classList.remove("ghost")
      console.log(this.winTarget)
@@ -94,7 +98,7 @@ export default class extends Controller {
     }
 
 
-    if (success === "Success" && parseInt(this.currentLevelTarget) < 20) {
+    if (success === "SUCCESS" && parseInt(this.currentLevelTarget) < 20) {
       this.#upgradeOnSuccess()
     }
 
