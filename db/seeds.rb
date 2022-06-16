@@ -11,16 +11,16 @@ p "Creating a current level"
 
 def create_materials(current_level, amount)
   Item.all.each do |item|
-    Material.create!(item: item, name: "shards", amount: amount, current_level: current_level)
-    Material.create!(item: item, name: "gold", amount: amount, current_level: current_level)
     Material.create!(item: item, name: "silver", amount: amount, current_level: current_level)
-    Material.create!(item: item, name: "leapstone", amount: amount, current_level: current_level)
+    Material.create!(item: item, name: "gold", amount: amount, current_level: current_level)
+    Material.create!(item: item, name: "shards", amount: amount, current_level: current_level)
     Material.create!(item: item, name: "oreha", amount: amount, current_level: current_level)
     if item.name == "weapon"
       Material.create!(item: item, name: "destruction", amount: amount, current_level: current_level)
     else
       Material.create!(item: item, name: "guardian", amount: amount, current_level: current_level)
     end
+    Material.create!(item: item, name: "leapstone", amount: amount, current_level: current_level)
   end
 end
 

@@ -105,7 +105,6 @@ export default class extends Controller {
 
       number.forEach((index) => {
 
-        // const currentAmount = parseInt(this.materialsTarget.children[index].dataset.amount)
         const currentGear = this.materialsTarget.children[index].dataset.name
 
         const imgTag = `<img class="mat-pic" src="/assets/materials/${currentGear}.png">`
