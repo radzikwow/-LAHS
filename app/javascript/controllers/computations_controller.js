@@ -8,7 +8,6 @@ export default class extends Controller {
     this.items = [0,0,0,0,0,0]
   }
 
-
   progressBar(event){
 
     this.itemEventTarget = event.currentTarget
