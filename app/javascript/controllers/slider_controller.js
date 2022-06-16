@@ -10,7 +10,7 @@ export default class extends Controller {
     const sliderValue = event.currentTarget.value
     this.numberTargets.forEach(number => {
       if (number.id == sliderId) {
-        number.innerText = `${sliderValue}/12`
+        number.innerText = `${sliderValue}`
       }
     })
   }
