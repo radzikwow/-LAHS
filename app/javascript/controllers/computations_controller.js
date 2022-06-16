@@ -23,6 +23,10 @@ export default class extends Controller {
     this.progressTarget.children[0].innerHTML = `${baseChance}%`
   }
 
+  sliders(event){
+    console.log(event.currentTarget.value)
+  }
+
   hone(event){
     this.successTarget.innerHTML = ""
     // const level = this.serviceTarget.dataset.currentLevel
@@ -69,7 +73,7 @@ export default class extends Controller {
       return 5
     }
   }
-  
+
   #upgradeOnSuccess(){
     this.currentLevelTarget = `${parseInt(this.currentLevelTarget) + 1}`
 
