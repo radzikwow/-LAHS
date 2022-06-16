@@ -1,14 +1,17 @@
 <div class="container-sliders mt-100" data-controller="slider" style="margin: 0 42px;">
-  <% @optionals.each_with_index do |optional, index| %>
+  <% @optionals.each_with_index do |(optional_key, optional_value), index| %>
     <div class="solar-blessing-slider">
       <div style="d-flex align-items-end">
-        <%=image_tag("materials/#{optional}.png", class:"material_icon")%>
-        <p data-slider-target="number" id="<%= index %>">0/12</p>
+        <%=image_tag("materials/#{optional_key}.png", class:"material_icon")%>
+        <div class="d-flex">
+          <p data-slider-target="number" data-computations-target="number" id="<%= index %>">0</p>
+          <p>/<%= optional_value[0] %></p>
+        </div>
       </div>
       <div class="slider">
-        <input type="range" min="0" max="12" value="0" class="slider" id="<%= index %>" data-action="input->slider#update">
+        <input type="range" min="0" max="<%= optional_value[0] %>" value="0" class="slider" id="<%= index %>" data-action="input->slider#update">
       </div>
-      <p>%</p>
+      <p><%= optional_value[1] %>%</p>
     </div>
   <% end %>
 </div>
