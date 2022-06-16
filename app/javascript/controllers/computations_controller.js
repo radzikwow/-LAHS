@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import ContextModuleFactory from "webpack/lib/ContextModuleFactory"
 
 export default class extends Controller {
-  static targets = [ "service", "success", "progress", "level", "materials", "cards"]
+  static targets = [ "service", "success", "progress", "level", "materials", "cards", "win", "fail"]
 
   connect(){
     this.items = [0,0,0,0,0,0]
@@ -35,6 +35,25 @@ export default class extends Controller {
     // call chance method to che chance
     const success = diceRoll <= baseChance ? "Success" : "Fail"
     this.successTarget.insertAdjacentHTML("beforeend", success)
+
+    if (success === "Success") {
+     const rollTarget = this.winTarget
+     console.log(this.winTarget)
+     this.winTarget.classList.remove("ghost")
+     console.log(this.winTarget)
+    //  setTimeout(()=>rollTarget.classList.add("ghost"), 2000)
+     // sleep 0.5sec
+     // add d-none again
+    } else {
+      const failRollTarget = this.failTarget
+      failRollTarget.classList.remove("ghost")
+      console.log(failRollTarget)
+      setTimeout(()=>failRollTarget.classList.add("ghost"), 3000)
+      // remove the  d-none class
+      // sleep 0.5sec
+      // add d-none again
+    }
+
 
     if (success === "Success" && parseInt(this.currentLevelTarget) < 20) {
       this.#upgradeOnSuccess()
@@ -69,7 +88,7 @@ export default class extends Controller {
       return 5
     }
   }
-  
+
   #upgradeOnSuccess(){
     this.currentLevelTarget = `${parseInt(this.currentLevelTarget) + 1}`
 

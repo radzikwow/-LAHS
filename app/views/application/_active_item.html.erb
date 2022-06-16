@@ -2,5 +2,11 @@
   <div data-active-target="img" class="d-flex justify-content-end">
     <%# <h1 class="honing-item"></h1> %>
     <h2 class="honing-level" data-active-target="level" data-computations-target="level"></h2>
+    <div class="ghost" id="gif" data-computations-target="win">
+      <%= image_tag "success.gif" %>
+    </div>
+    <div class="ghost" id="gif" data-computations-target="fail">
+      <%= image_tag "fail.gif" %>
+    </div>
   </div>
 </div>
