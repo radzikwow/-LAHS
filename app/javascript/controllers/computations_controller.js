@@ -2,25 +2,73 @@ import { Controller } from "stimulus"
 import ContextModuleFactory from "webpack/lib/ContextModuleFactory"
 
 export default class extends Controller {
-  static targets = [ "service", "success", "progress", "level", "materials", "cards"]
+
+  static targets = [ "service", "success", "progress", "level", "materials", "cards", "win", "fail"]
+
 
   connect(){
+    this.sum = 0
     this.items = [0,0,0,0,0,0]
   }
 
-
   progressBar(event){
+    console.log("here")
+    console.log(this.additivePercentage)
 
     this.itemEventTarget = event.currentTarget
     this.currentLevelTarget = event.currentTarget.children[1].innerHTML
     this.itemName = event.currentTarget.dataset.gear
 
-    const level = parseInt(event.currentTarget.dataset.level, 10)
+    this.level = parseInt(event.currentTarget.dataset.level, 10)
 
-    const baseChance = this.#chance(level)
+    const baseChance = this.#chance(this.level)
+
     this.progressTarget.style = `width:${baseChance}%`
     this.progressTarget.ariaValueNow = `${baseChance}`
     this.progressTarget.children[0].innerHTML = `${baseChance}%`
+  }
+
+  slider(event){
+    console.log("start")
+    console.log(this.sum)
+    // an id [0,2] selecting which one of the sliders
+    this.sliderId = event.currentTarget.id
+    // the value of the selected slider
+    this.sliderValue = event.currentTarget.value
+
+    if(this.sliderId === "0"){
+      this.additivePercentage = parseInt(this.sliderValue)*0.25
+      this.sum += 0.25
+    }
+    else if(this.sliderId === "1"){
+      this.additivePercentage = parseInt(this.sliderValue)*0.5
+      this.sum += 0.5
+    }
+    else{
+      this.additivePercentage = parseInt(this.sliderValue)
+      this.sum += 1
+    }
+
+    // console.log(this.additivePercentage)
+    // console.log(typeof this.additivePercentage)
+    console.log("end")
+    console.log(this.sum)
+
+    const baseChance = parseInt(this.#chance(this.level))
+
+    if(baseChance != 100){
+      this.progressTarget.style = `width:${baseChance + this.sum}%`
+      this.progressTarget.ariaValueNow = `${baseChance + this.sum}`
+      this.progressTarget.children[0].innerHTML = `${baseChance + this.sum}%`
+    }
+    // this.additivePercentage = Number(parseFloat(event.currentTarget.dataset.additivePercentage).toFixed(2))
+    // const baseChance = this.#chance(this.level)
+    // this.sum += Number(baseChance) + Number(this.additivePercentage)
+
+    // console.log(typeof this.sum )
+    // this.progressTarget.style = `width:${this.sum}%`
+    // this.progressTarget.ariaValueNow = `${this.sum}`
+    // this.progressTarget.children[0].innerHTML = `${this.sum}%`
   }
 
   hone(event){
@@ -35,6 +83,25 @@ export default class extends Controller {
     // call chance method to che chance
     const success = diceRoll <= baseChance ? "Success" : "Fail"
     this.successTarget.insertAdjacentHTML("beforeend", success)
+
+    if (success === "Success") {
+     const rollTarget = this.winTarget
+     console.log(this.winTarget)
+     this.winTarget.classList.remove("ghost")
+     console.log(this.winTarget)
+    //  setTimeout(()=>rollTarget.classList.add("ghost"), 2000)
+     // sleep 0.5sec
+     // add d-none again
+    } else {
+      const failRollTarget = this.failTarget
+      failRollTarget.classList.remove("ghost")
+      console.log(failRollTarget)
+      setTimeout(()=>failRollTarget.classList.add("ghost"), 3000)
+      // remove the  d-none class
+      // sleep 0.5sec
+      // add d-none again
+    }
+
 
     if (success === "Success" && parseInt(this.currentLevelTarget) < 20) {
       this.#upgradeOnSuccess()
@@ -69,7 +136,7 @@ export default class extends Controller {
       return 5
     }
   }
-  
+
   #upgradeOnSuccess(){
     this.currentLevelTarget = `${parseInt(this.currentLevelTarget) + 1}`
 
