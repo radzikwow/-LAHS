@@ -9,12 +9,13 @@
         </div>
       </div>
       <div class="slider">
-        <input type="range" min="0" max="<%= optional_value[0] %>" value="0" class="slider" id="<%= index %>" data-action="input->slider#update">
+        <input type="range" min="0" max="<%= optional_value[0] %>" value="0" class="slider" id="<%= index %>" data-action="input->slider#update input->computations#slider" data-percentage="<%= optional_value[1] %>">
       </div>
       <p><%= optional_value[1] %>%</p>
     </div>
   <% end %>
 </div>
+
 <!--  <div class="solar-grace-slider">
     <div style="d-flex">
       <%=image_tag("materials/solar grace.png", class:"material_icon")%>
