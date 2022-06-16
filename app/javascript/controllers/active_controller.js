@@ -8,7 +8,7 @@ export default class extends Controller {
     // get id of the div
     const selectedItemName = event.currentTarget.dataset.gear
     const selectedItem = event.currentTarget
-    const selectedItemLevel = selectedItem.children[1].innerHTML
+    const selectedItemLevel = parseInt(selectedItem.children[1].innerHTML)
 
     this.gearTargets.forEach(gear=>{
       gear.classList.remove("active-item")
