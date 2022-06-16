@@ -1,7 +1,7 @@
+SuccessChance.destroy_all
+Material.destroy_all
 Item.destroy_all
 Attempt.destroy_all
-Material.destroy_all
-SuccessChance.destroy_all
 CurrentLevel.destroy_all
 p "Destroying all seeds"
 p "All seeds destroyed"
