@@ -19,8 +19,10 @@ export default class extends Controller {
 
     // display selected item on honing position
     const honingItemImg = this.imgTarget
+    const activeImage = event.currentTarget.children[0].src
+    console.log(event.currentTarget.children[0].src)
 
-    const imgTag = `background-image: url(\"/assets/items/${selectedItemName}.png\"); background-size: cover;
+    const imgTag = `background-image: url("${activeImage}"); background-size: cover;
     background-position: center; background-repeat: no-repeat; height: 100px; width: 100px;`
     honingItemImg.setAttribute("style", imgTag)
     // `<img class=\"selected_item\" src=\"/assets/items/${selectedItemName}.png\">`

@@ -57,3 +57,41 @@
     background-image: radial-gradient(circle at center,$bright-yellow,rgba(255, 255, 255, 0));
   }
 }
+
+.button-items {
+  padding: 10px 10px;
+  gap: 10px;
+  margin-bottom: 10px;
+
+  // position: absolute;
+  width: 164px;
+  height: 65px;
+  // left: 788px;
+  // top: 958px;
+
+  background: rgba(81, 80, 80, 0.75);
+
+  // font-family: 'Vendome';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  /* identical to box height */
+  color: #FFFFFF;
+
+  /* Glow */
+  text-shadow: 0px 0px 10px #FFFFFF;
+
+  /* Border */
+  border-style: solid;
+  border-width: 2px;
+  border-image: linear-gradient(90deg, rgba(255,255,255,0) 0%, $bright-yellow 50%, rgba(255,255,255,0) 100%) 1;
+  // border-image: linear-gradient(270.28deg, rgba(255, 255, 255, 0) 0.22%, #FFFFFF 49.99%, rgba(0, 0, 0, 0) 99.76%) 1;
+
+  pointer: cursor;
+
+  &:hover{
+    color: black;
+    background-image: radial-gradient(circle at center,$bright-yellow,rgba(255, 255, 255, 0));
+  }
+}
