@@ -7,7 +7,6 @@ export default class extends Controller {
 
   connect(){
     this.sum = 0
-    this.chanceWithOptionals = 100
     this.items = [0,0,0,0,0,0]
   }
 
@@ -29,8 +28,7 @@ export default class extends Controller {
   }
 
   slider(event){
-    console.log("start")
-    console.log(this.sum)
+
     // an id [0,2] selecting which one of the sliders
     this.sliderId = event.currentTarget.id
     // the value of the selected slider
@@ -57,7 +55,6 @@ export default class extends Controller {
     const baseChance = parseInt(this.#chance(this.level))
 
     if(baseChance != 100){
-      this.chanceWithOptionals = Number(baseChance) + Number(this.sum)
       this.progressTarget.style = `width:${baseChance + this.sum}%`
       this.progressTarget.ariaValueNow = `${baseChance + this.sum}`
       this.progressTarget.children[0].innerHTML = `${baseChance + this.sum}%`
@@ -78,7 +75,7 @@ export default class extends Controller {
     console.log(this.sum)
     console.log(this.chanceWithOptionals)
     // call chance method to che chance
-    const success = diceRoll <= this.chanceWithOptionals ? "SUCCESS" : "FAIL"
+    const success = diceRoll <= (this.sum + baseChance) ? "SUCCESS" : "FAIL"
     this.successTarget.insertAdjacentHTML("beforeend", success)
 
     if (success === "SUCCESS") {
