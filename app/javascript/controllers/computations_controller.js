@@ -20,7 +20,8 @@ export default class extends Controller {
 
     this.level = parseInt(event.currentTarget.dataset.level, 10)
 
-    const baseChance = this.#chance(this.level)
+    // const baseChance = this.#chance(this.level)
+    const baseChance = this.#chance(parseInt(this.currentLevelTarget, 10))
 
     this.progressTarget.style = `width:${baseChance}%`
     this.progressTarget.ariaValueNow = `${baseChance}`
@@ -52,7 +53,8 @@ export default class extends Controller {
     console.log("end")
     console.log(this.sum)
 
-    const baseChance = parseInt(this.#chance(this.level))
+    // const baseChance = parseInt(this.#chance(this.level))
+    const baseChance = parseInt(this.#chance(parseInt(this.currentLevelTarget, 10)))
 
     if(baseChance != 100){
       this.progressTarget.style = `width:${baseChance + this.sum}%`
