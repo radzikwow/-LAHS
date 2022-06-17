@@ -9,7 +9,7 @@ class PagesController < ApplicationController
     @mats = {
       silver: "https://i.imgur.com/sWFzPpF.png",
       gold: "https://i.imgur.com/bhEgr47.png",
-      shard: "https://i.imgur.com/sjexkJA.png",
+      shards: "https://i.imgur.com/sjexkJA.png",
       oreha: "https://i.imgur.com/BcSu9Iv.png",
       destruction: "https://i.imgur.com/6zti2bC.png",
       leapstone: "https://i.imgur.com/wioa5ji.png",
