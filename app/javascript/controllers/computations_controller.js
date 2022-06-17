@@ -181,15 +181,15 @@ export default class extends Controller {
 
   #updateMaterialsCard(gearName, gearLevel){
 
-    this.cardsTarget.innerHTML = ""
-
+    this.cardsTarget.innerHTML=""
     const materialsAmounts = this.#materialsCalculations( gearName, gearLevel)
     const materials = Object.keys(materialsAmounts)
-
+    const materialsSplit = (this.cardsTarget.dataset.matsid.split('"'))
+    console.log(materials)
     materials.forEach((material, index) => {
 
        const innerHTMLTag = `<div class="text-center">
-       <img class="mat-pic" src="https://i.imgur.com/${this.cardsTarget.dataset.matsid[index]}.png">
+       <img class="mat-pic" src="https://i.imgur.com/${materialsSplit[(2 * index) + 1]}.png">
        <p class="p-tag"> ${materialsAmounts[material]} </p>
        </div>`
 
