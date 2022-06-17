@@ -72,16 +72,16 @@ export default class extends Controller {
 
     if (success === "SUCCESS") {
      const rollTarget = this.winTarget
-     this.winTarget.classList.remove("ghost")
+     this.winTarget.removeAttribute("id")
      // sleep 2sec
      // add d-none again
-     setTimeout(()=>rollTarget.classList.add("ghost"), 2000)
+     setTimeout(()=>rollTarget.setAttribute("id","ghost"), 2000)
     } else {
       const failRollTarget = this.failTarget
-      failRollTarget.classList.remove("ghost")
+      failRollTarget.removeAttribute("id")
       // remove the  d-none class
       // sleep 0.5sec
-      setTimeout(()=>failRollTarget.classList.add("ghost"), 3000)
+      setTimeout(()=>failRollTarget.setAttribute("id","ghost"), 3000)
     }
 
 

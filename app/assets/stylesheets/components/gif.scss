@@ -1,11 +1,14 @@
-.ghost {
+#ghost {
   display: none;
 }
 
-#gif {
+.gif {
+  margin-right: 45px;
+  display: flex;
+  justify-content: center;
   z-index: 10000;
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
   opacity: 0.7;
   img {
     width: 1000px;
