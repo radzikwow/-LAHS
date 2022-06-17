@@ -4,6 +4,18 @@ class PagesController < ApplicationController
 
     @current_levels = []
     @items = []
+    # materials hash of arrays: each entry is an array of materials for a specific item
+    @materials = {}
+    @mats = {
+      silver: "https://i.imgur.com/sWFzPpF.png",
+      gold: "https://i.imgur.com/bhEgr47.png",
+      shard: "https://i.imgur.com/sjexkJA.png",
+      oreha: "https://i.imgur.com/BcSu9Iv.png",
+      destruction: "https://i.imgur.com/6zti2bC.png",
+      leapstone: "https://i.imgur.com/wioa5ji.png",
+      guardian: "https://i.imgur.com/JNFBDGK.png"
+    }
+    @matsid = ["sWFzPpF", "bhEgr47", "sjexkJA", "BcSu9Iv", "6zti2bC", "wioa5ji", "JNFBDGK"]
 
     @optionals = { 'solar grace': [24, 0.25], 'solar blessing': [12, 0.5], 'solar protection': [6, 1] }
 
@@ -18,8 +30,10 @@ class PagesController < ApplicationController
       @current_levels << @current_level
     end
 
-    # hardcoding materials for honing. Item = "helmet"
-    @materials = @items[1].materials.where(current_level: @items[1].current_level.level)
+    @items.each do |item|
+      @materials[item.name] = item.materials.where(current_level: item.current_level)
+    end
+
     @service = CalculationService.new(@items[1].current_level, @items[1])
     @success = @service.perform!
     Attempt.create!

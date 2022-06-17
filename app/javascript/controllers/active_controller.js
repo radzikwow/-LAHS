@@ -41,11 +41,11 @@ export default class extends Controller {
 
     const materialsAmounts = this.#materialsCalculations(itemName, itemlevel)
     const materials = Object.keys(materialsAmounts)
-
-    materials.forEach((material) => {
+    const materialsSplit = (this.cardsTarget.dataset.matsid.split('"'))
+    materials.forEach((material, index) => {
 
       const innerHTMLTag = `<div class="text-center">
-      <img class="mat-pic style="margin-right: 8px;" src="/assets/materials/${material}.png">
+      <img class="mat-pic" style="margin-right: 8px;" src="https://i.imgur.com/${materialsSplit[index + 1]}.png">
       <p class="p-tag"> ${materialsAmounts[material]} </p>
       </div>`
 

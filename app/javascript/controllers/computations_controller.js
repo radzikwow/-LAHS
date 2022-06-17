@@ -101,6 +101,7 @@ export default class extends Controller {
 
     // update counter of materials
     // console.log(this.materialsTarget)
+    console.log("b4 function call")
     this.#updateMaterialsCounter()
   }
 
@@ -154,7 +155,7 @@ export default class extends Controller {
       // this.materialsTarget is the attempts div which encloses all of the materials
 
       const elements = this.cardsTarget.querySelectorAll(".p-tag")
-
+      console.log(elements)
       elements.forEach((element, index) => {
         this.items[index] += parseInt(element.innerText)
         // materialsAmount.push(parseInt(element.innerText))
@@ -163,9 +164,11 @@ export default class extends Controller {
       const number = [0,1,2,3,4,5]
 
       number.forEach((index) => {
-
-        const currentGear = this.materialsTarget.children[index].dataset.name
-
+        // const currentGear = this.materialsTarget.children[index].dataset.name
+        const currentGear = document.getElementById("mats").children[index]
+        console.log(`current: ${currentGear}`)
+        const currentImg = document.getElementsByClassName("mat-pic").children[index]
+        console.log(currentImg)
         const imgTag = `<img class="mat-pic" style="margin-right: 8px;" src="/assets/materials/${currentGear}.png">`
         const divTag = `<div class="notification-content" data-action="click->computations#hone">
         <h5>${this.items[index]}</h5></div>`
@@ -183,16 +186,15 @@ export default class extends Controller {
     const materialsAmounts = this.#materialsCalculations( gearName, gearLevel)
     const materials = Object.keys(materialsAmounts)
 
-    materials.forEach((material) => {
+    materials.forEach((material, index) => {
 
        const innerHTMLTag = `<div class="text-center">
-       <img class="mat-pic" src="/assets/materials/${material}.png">
+       <img class="mat-pic" src="https://i.imgur.com/${this.cardsTarget.dataset.matsid[index]}.png">
        <p class="p-tag"> ${materialsAmounts[material]} </p>
        </div>`
 
        this.cardsTarget.insertAdjacentHTML("beforeend", innerHTMLTag)
     })
-
   }
 
   #materialsCalculations(gearName, gearLevel){
