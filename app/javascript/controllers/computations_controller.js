@@ -11,8 +11,6 @@ export default class extends Controller {
   }
 
   progressBar(event){
-    console.log("here")
-    console.log(this.additivePercentage)
 
     this.itemEventTarget = event.currentTarget
     this.currentLevelTarget = event.currentTarget.children[1].innerHTML
@@ -50,8 +48,6 @@ export default class extends Controller {
 
     // console.log(this.additivePercentage)
     // console.log(typeof this.additivePercentage)
-    console.log("end")
-    console.log(this.sum)
 
     // const baseChance = parseInt(this.#chance(this.level))
     const baseChance = parseInt(this.#chance(parseInt(this.currentLevelTarget, 10)))
@@ -68,14 +64,8 @@ export default class extends Controller {
     // const level = this.serviceTarget.dataset.currentLevel
     // const levelInt = parseInt(level, 10)
     const baseChance = this.#chance(parseInt(this.currentLevelTarget))
-    console.log(this.currentLevelTarget)
-    console.log("yo")
-    console.log(baseChance)
     // Returns a random number [0, 100]
     const diceRoll = Math.round(Math.random() * 101)
-    console.log(diceRoll)
-    console.log(this.sum)
-    console.log(this.chanceWithOptionals)
     // call chance method to che chance
     const success = diceRoll <= (this.sum + baseChance) ? "SUCCESS" : "FAIL"
     this.successTarget.insertAdjacentHTML("beforeend", success)
@@ -83,14 +73,12 @@ export default class extends Controller {
     if (success === "SUCCESS") {
      const rollTarget = this.winTarget
      this.winTarget.classList.remove("ghost")
-     console.log(this.winTarget)
      // sleep 2sec
      // add d-none again
      setTimeout(()=>rollTarget.classList.add("ghost"), 2000)
     } else {
       const failRollTarget = this.failTarget
       failRollTarget.classList.remove("ghost")
-      console.log(failRollTarget)
       // remove the  d-none class
       // sleep 0.5sec
       setTimeout(()=>failRollTarget.classList.add("ghost"), 3000)
@@ -158,20 +146,24 @@ export default class extends Controller {
 
       const elements = this.cardsTarget.querySelectorAll(".p-tag")
       console.log(elements)
+
       elements.forEach((element, index) => {
         this.items[index] += parseInt(element.innerText)
         // materialsAmount.push(parseInt(element.innerText))
       })
 
+      console.log(this.items)
+      const materialsSplit = (this.cardsTarget.dataset.matsid.split('"'))
       const number = [0,1,2,3,4,5]
 
       number.forEach((index) => {
-        // const currentGear = this.materialsTarget.children[index].dataset.name
-        const currentGear = document.getElementById("mats").children[index]
-        console.log(`current: ${currentGear}`)
-        const currentImg = document.getElementsByClassName("mat-pic").children[index]
-        console.log(currentImg)
-        const imgTag = `<img class="mat-pic" style="margin-right: 8px;" src="/assets/materials/${currentGear}.png">`
+        // const currentMat = document.getElementById("mats").children[index]
+
+        const currentMat = this.materialsTarget.children[index].dataset.name
+        console.log(`current: ${currentMat}`)
+        // const currentImg = document.getElementsByClassName("mat-pic").children[index]
+        // console.log(currentImg)
+        const imgTag = `<img class="mat-pic" style="margin-right: 8px;" src="https://i.imgur.com/${materialsSplit[(2 * index) + 1]}.png">`
         const divTag = `<div class="notification-content" data-action="click->computations#hone">
         <h5>${this.items[index]}</h5></div>`
 
@@ -187,7 +179,7 @@ export default class extends Controller {
     const materialsAmounts = this.#materialsCalculations( gearName, gearLevel)
     const materials = Object.keys(materialsAmounts)
     const materialsSplit = (this.cardsTarget.dataset.matsid.split('"'))
-    console.log(materials)
+
     materials.forEach((material, index) => {
 
        const innerHTMLTag = `<div class="text-center">
