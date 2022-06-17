@@ -45,7 +45,7 @@ export default class extends Controller {
     materials.forEach((material, index) => {
 
       const innerHTMLTag = `<div class="text-center">
-      <img class="mat-pic" style="margin-right: 8px;" src="https://i.imgur.com/${materialsSplit[index + 1]}.png">
+      <img class="mat-pic" style="margin-right: 8px;" src="https://i.imgur.com/${materialsSplit[(2 * index) + 1]}.png">
       <p class="p-tag"> ${materialsAmounts[material]} </p>
       </div>`
 
