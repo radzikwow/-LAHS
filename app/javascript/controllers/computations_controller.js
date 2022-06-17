@@ -28,8 +28,7 @@ export default class extends Controller {
   }
 
   slider(event){
-    console.log("start")
-    console.log(this.sum)
+
     // an id [0,2] selecting which one of the sliders
     this.sliderId = event.currentTarget.id
     // the value of the selected slider
@@ -54,14 +53,12 @@ export default class extends Controller {
     console.log(this.sum)
 
     const baseChance = parseInt(this.#chance(this.level))
-    this.chanceWithOptionals = baseChance + this.sum
 
     if(baseChance != 100){
       this.progressTarget.style = `width:${baseChance + this.sum}%`
       this.progressTarget.ariaValueNow = `${baseChance + this.sum}`
       this.progressTarget.children[0].innerHTML = `${baseChance + this.sum}%`
     }
-
   }
 
   hone(event){
@@ -69,15 +66,19 @@ export default class extends Controller {
     // const level = this.serviceTarget.dataset.currentLevel
     // const levelInt = parseInt(level, 10)
     const baseChance = this.#chance(parseInt(this.currentLevelTarget))
-
+    console.log(this.currentLevelTarget)
+    console.log("yo")
+    console.log(baseChance)
     // Returns a random number [0, 100]
     const diceRoll = Math.round(Math.random() * 101)
-
+    console.log(diceRoll)
+    console.log(this.sum)
+    console.log(this.chanceWithOptionals)
     // call chance method to che chance
-    const success = diceRoll <= this.chanceWithOptionals ? "SUCCESS" : "FAIL"
+    const success = diceRoll <= (this.sum + baseChance) ? "SUCCESS" : "FAIL"
     this.successTarget.insertAdjacentHTML("beforeend", success)
 
-    if (success === "Success") {
+    if (success === "SUCCESS") {
      const rollTarget = this.winTarget
      this.winTarget.classList.remove("ghost")
      console.log(this.winTarget)
@@ -94,12 +95,13 @@ export default class extends Controller {
     }
 
 
-    if (success === "Success" && parseInt(this.currentLevelTarget) < 20) {
+    if (success === "SUCCESS" && parseInt(this.currentLevelTarget) < 20) {
       this.#upgradeOnSuccess()
     }
 
     // update counter of materials
     // console.log(this.materialsTarget)
+    console.log("b4 function call")
     this.#updateMaterialsCounter()
   }
 
@@ -153,7 +155,7 @@ export default class extends Controller {
       // this.materialsTarget is the attempts div which encloses all of the materials
 
       const elements = this.cardsTarget.querySelectorAll(".p-tag")
-
+      console.log(elements)
       elements.forEach((element, index) => {
         this.items[index] += parseInt(element.innerText)
         // materialsAmount.push(parseInt(element.innerText))
@@ -162,9 +164,11 @@ export default class extends Controller {
       const number = [0,1,2,3,4,5]
 
       number.forEach((index) => {
-
-        const currentGear = this.materialsTarget.children[index].dataset.name
-
+        // const currentGear = this.materialsTarget.children[index].dataset.name
+        const currentGear = document.getElementById("mats").children[index]
+        console.log(`current: ${currentGear}`)
+        const currentImg = document.getElementsByClassName("mat-pic").children[index]
+        console.log(currentImg)
         const imgTag = `<img class="mat-pic" style="margin-right: 8px;" src="/assets/materials/${currentGear}.png">`
         const divTag = `<div class="notification-content" data-action="click->computations#hone">
         <h5>${this.items[index]}</h5></div>`
@@ -182,16 +186,15 @@ export default class extends Controller {
     const materialsAmounts = this.#materialsCalculations( gearName, gearLevel)
     const materials = Object.keys(materialsAmounts)
 
-    materials.forEach((material) => {
+    materials.forEach((material, index) => {
 
        const innerHTMLTag = `<div class="text-center">
-       <img class="mat-pic" src="/assets/materials/${material}.png">
+       <img class="mat-pic" src="https://i.imgur.com/${this.cardsTarget.dataset.matsid[index]}.png">
        <p class="p-tag"> ${materialsAmounts[material]} </p>
        </div>`
 
        this.cardsTarget.insertAdjacentHTML("beforeend", innerHTMLTag)
     })
-
   }
 
   #materialsCalculations(gearName, gearLevel){
