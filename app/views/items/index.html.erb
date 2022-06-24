@@ -11,7 +11,7 @@
               <% @items.each do |item| %>
                 <div class="item-container">
                   <%= image_tag("items/#{item.name}.png", class:"item-img") %>
-                  <%= f.input "#{item.name}", :collection => 0..19, input_html: { min: '0', max: '19' } %>
+                  <%= f.input "#{item.name}", :collection => 0..19, input_html: { min: '0', max: '19' }, default: 0 %>
                 </div>
               <% end %>
             </div>
